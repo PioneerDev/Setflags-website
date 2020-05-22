@@ -15,6 +15,9 @@ $ yarn start
 
 # build for production and launch server
 $ yarn build
+
+# commit changes
+$ yarn commit
 ```
 
 ## Info
