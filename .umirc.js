@@ -1,7 +1,6 @@
 
 // ref: https://umijs.org/config/
 import * as routes from './src/config/route.js'
-console.log('routes', routes)
 
 export default {
   treeShaking: true,
