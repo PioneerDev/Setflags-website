@@ -3,12 +3,23 @@
 import * as routes from './src/config/route.js'
 const path = require('path')
 
+
+const resolve = function (dir) {
+  return path.join(__dirname, '.', dir)
+}
+
 export default {
   treeShaking: true,
   routes: [
     ...routes.default
   ],
-  alias: {'@': resolve(__dirname, '../src'),},
+  alias: {
+    '@': resolve('src'),
+    '@PAGES': resolve('src/pages'),
+    '@SERVICES': resolve('src/ser'),
+    '@CONFIG': resolve('src/config'),
+    '@UTILS': resolve('src/utils')
+  },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
