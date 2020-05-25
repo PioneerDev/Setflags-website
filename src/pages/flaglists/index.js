@@ -3,7 +3,7 @@ import { connect } from 'dva'
 
 const FlagList = (props)=>{
     useEffect(()=>{
-        const {dispatch} = this.props
+        const {dispatch} = props
         dispatch({
             type: 'flag/getFlagList'
         })
@@ -11,7 +11,7 @@ const FlagList = (props)=>{
 
     return(
         <div>   
-         1111
+         hello,world!
         </div>
     )
 }

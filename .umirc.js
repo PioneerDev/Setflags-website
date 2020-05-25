@@ -16,7 +16,7 @@ export default {
   alias: {
     '@': resolve('src'),
     '@PAGES': resolve('src/pages'),
-    '@SERVICES': resolve('src/ser'),
+    '@SERVICES': resolve('src/services'),
     '@CONFIG': resolve('src/config'),
     '@UTILS': resolve('src/utils')
   },

@@ -1,4 +1,4 @@
-import { getFlagList } from '@/services/flag'
+import { getFlagList } from '@SERVICES/flag'
 
 export default {
     namespace: 'flag',

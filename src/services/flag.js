@@ -1,9 +1,12 @@
-import request from '@UTILS/request';
-import {baseUrl} from '@CONFIG/baseInfo'
+import request from '@UTILS/request'
+import baseInfo from '@CONFIG/baseInfo'
 
+const { baseUrl } = baseInfo
+
+console.log('baseInfo', baseInfo)
 console.log('request---->', request)
 console.log('baseUrl---->', baseUrl)
 
 export async function getFlagList() {
-  return request(`${baseUrl}/v2/flags`);
+  return request(`${baseUrl}/flags`);
 }
