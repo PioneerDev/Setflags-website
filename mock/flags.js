@@ -16,6 +16,5 @@ export default {
         "status": "paid"
       }
     ]
-  }),
-  '/api/user':['123','234']
+  })
 }
