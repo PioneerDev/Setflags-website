@@ -6,19 +6,19 @@ import {
   Button,
   Typography,
 } from '@material-ui/core'
-import './index.less'
+import styles from './index.less'
 
 export default () => {
   return (
-    <Card className="card-item-container">
-      <CardContent className="card-item-content">
-        <Typography className="title" color="textSecondary" gutterBottom>
+    <Card className={styles.container}>
+      <CardContent className={styles.content}>
+        <Typography className={styles.title} color="textSecondary" gutterBottom>
           Word of the Day
         </Typography>
         <Typography variant="h5" component="h2">
           be nev o lent
         </Typography>
-        <Typography className="pos" color="textSecondary">
+        <Typography className={styles.pos} color="textSecondary">
           adjective
         </Typography>
         <Typography variant="body2" component="p">

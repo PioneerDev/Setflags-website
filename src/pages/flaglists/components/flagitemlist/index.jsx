@@ -1,10 +1,10 @@
 import React from 'react'
-import './index.less'
+import styles from './index.less'
 import Flagitem from '../flagitem'
 
 export default () => {
   return (
-    <div className="card-container">
+    <div className={styles.container}>
       <Flagitem />
     </div>
   )
