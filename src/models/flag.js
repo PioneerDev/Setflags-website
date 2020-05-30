@@ -7,8 +7,23 @@ export default {
     },
     effects: {
         * getFlagList(payload, {call, put, select}) {
-            const data = yield call(getFlagList)
-            console.log('*getFlagList -> data', data)
+            const res = yield call(getFlagList)
+            if(res.code === 200) {
+                yield put({
+                    type: 'changeFlaglist',
+                    payload: res.data
+                })
+            }
+            console.log('*getFlagList -> data', res)
+        }
+    },
+    reducers: {
+        changeFlaglist(state, {payload}) {
+            console.log('payload--->', payload)
+            return {
+                ...state,
+                flagList:[...payload]
+            }
         }
     }
 }

@@ -7,29 +7,36 @@ import {
   Typography,
 } from '@material-ui/core'
 import styles from './index.less'
+import { connect } from 'dva'
 
-export default () => {
+const FlagItem =  (props) => {
+  const {ele} = props
+  console.log('ele---->',ele)
   return (
     <Card className={styles.container}>
       <CardContent className={styles.content}>
         <Typography className={styles.title} color="textSecondary" gutterBottom>
-          Word of the Day
+            立志：
         </Typography>
         <Typography variant="h5" component="h2">
-          be nev o lent
+            {ele.task}
         </Typography>
         <Typography className={styles.pos} color="textSecondary">
-          adjective
+            剩余： {ele.days}天
         </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
+          最大奖励： {ele.max_witness}box
           <br />
-          {'"a benevolent smile"'}
+          {`总金额： ${ele.amount}box`}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="large" color="primary">查看更多</Button>
       </CardActions>
     </Card>
   )
 }
+
+export default connect(({flag}) =>({
+  flag
+}))(FlagItem)

@@ -1,18 +1,21 @@
 import React, {useEffect} from 'react'
 import { connect } from 'dva'
-import {Container} from '@material-ui/core'
 import Flagitemlist from './components/flagitemlist'
 
 const FlagList = (props)=>{
+    const {flag:{flagList}} = props
     useEffect(()=>{
         const {dispatch} = props
-        dispatch({
-            type: 'flag/getFlagList'
-        })
+        console.log('flagList-->', flagList)
+        if(flagList.length === 0) {
+            dispatch({
+                type: 'flag/getFlagList'
+            })
+        }
     })
-
+    console.log('props--->',props)
     return(
-        <Flagitemlist />
+        <Flagitemlist flagList={flagList}/>
     )
 }
 
