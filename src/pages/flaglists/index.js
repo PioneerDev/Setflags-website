@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react'
 import { connect } from 'dva'
+import {Container} from '@material-ui/core'
+import Flagitemlist from './components/flagitemlist'
 
 const FlagList = (props)=>{
     useEffect(()=>{
@@ -10,9 +12,7 @@ const FlagList = (props)=>{
     })
 
     return(
-        <div>   
-         hello,world!
-        </div>
+        <Flagitemlist />
     )
 }
 
