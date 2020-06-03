@@ -1,24 +1,16 @@
-.root {
-  min-width: 275px;
+.flagitem {
+  &-container {
+    width: '100%';
+    min-width: 275px;
+    max-width: '36ch';
+  }
+  &-item {
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+  }
+  &-status {
+    padding-top: 8px;
+  }
 }
 
-.bullet {
-  display: 'inline-block';
-  margin: '0 2px';
-  transform: 'scale(0.8)';
-}
-.title  {
-  font-size: 14px;
-  color:red;
-}
-.pos {
-  margin-bottom: 12px;
-}
-
-.container {
-  margin-bottom: 10px;
-}
-
-.content {
-  text-align:left;
-}

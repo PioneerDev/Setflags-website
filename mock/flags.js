@@ -3,7 +3,7 @@ import mockjs from 'mockjs';
 export default {
   '/flags':mockjs.mock({
     code: 200,
-    'data': [
+    'data|5': [
       {
         "id": "@string",
         "payer_id": "@string",

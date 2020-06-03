@@ -6,7 +6,7 @@ export default (props) => {
   const {flagList} = props
   console.log('flagList--->', flagList)
   return (
-    <div className={styles.container}>
+    <div className="flaglist-container">
       {
         flagList.length>0&&flagList.map((ele,idx)=><Flagitem ele={ele} key={idx}/>)
       }
