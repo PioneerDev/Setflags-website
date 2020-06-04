@@ -10,6 +10,7 @@ const resolve = function (dir) {
 
 export default {
   treeShaking: true,
+  disableCSSModules:true,
   routes: [
     ...routes.default
   ],
