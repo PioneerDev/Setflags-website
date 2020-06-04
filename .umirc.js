@@ -13,6 +13,7 @@ export default {
   disableCSSModules:true,
   outputPath:'docs',
   base: '/Setflags-website/',
+  publicPath :'/Setflags-website/',
   routes: [
     ...routes.default
   ],
