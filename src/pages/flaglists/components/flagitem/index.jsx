@@ -37,7 +37,7 @@ const FlagItem =  (props) => {
                 className="inline"
                 color="textPrimary"
               >
-                发起人: {ele.payer_id}
+                发起人: {ele.payer_name?ele.payer_name:'none'}
               </Typography>
             </>
           }
