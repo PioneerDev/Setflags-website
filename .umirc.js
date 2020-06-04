@@ -12,6 +12,7 @@ export default {
   treeShaking: true,
   disableCSSModules:true,
   outputPath:'docs',
+  base: '/Setflags-website/',
   routes: [
     ...routes.default
   ],
