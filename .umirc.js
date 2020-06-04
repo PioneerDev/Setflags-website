@@ -11,6 +11,7 @@ const resolve = function (dir) {
 export default {
   treeShaking: true,
   disableCSSModules:true,
+  outputPath:'docs',
   routes: [
     ...routes.default
   ],
