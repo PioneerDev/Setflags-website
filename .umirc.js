@@ -43,5 +43,8 @@ export default {
         ],
       },
     }],
+    [
+      'umi-plugin-gh-pages'
+    ]
   ],
 }
