@@ -17,6 +17,7 @@ const NewFlags = (props)=>{
         <div className="newflags-title">新建立志</div>
         <Controller 
           as={<TextField id="task-basic" label="任务" variant="filled" className="newflags-item"></TextField>}
+          name="task"
           control={control}
           defaultValue=''
         />
@@ -25,6 +26,7 @@ const NewFlags = (props)=>{
           as={
             <TextField id="days-basic" label="天数" variant="filled" className="newflags-item"></TextField>
           }
+          name="days"
           control={control}
           defaultValue=''
        />
@@ -33,14 +35,18 @@ const NewFlags = (props)=>{
           as={
             <TextField id="maxWitness-basic" label="最大奖励" variant="filled" className="newflags-item"></TextField>
           }
+          name="max_witness"
           control={control}
           defaultValue=''
        />
+
         <Controller 
           as={
             <TextField id="maxWitness-basic" label="完成时间" variant="filled" className="newflags-item"></TextField>
           }
           control={control}
+          name="times_achieved"
+          defaultValue=''
         />
 
         <Button variant="contained" color="primary" className="newflags-submit" size="large" type="submit">
