@@ -17,7 +17,7 @@ const errorHandler = (error)=> {
 
 const request = extend({
   errorHandler,
-  credentials: 'include', 
+  credentials: 'omit', 
 });
 
 export default request;
