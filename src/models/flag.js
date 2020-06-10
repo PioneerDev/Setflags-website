@@ -15,6 +15,9 @@ export default {
                 })
             }
             console.log('*getFlagList -> data', res)
+        },
+        * uploadFlag(payload, {call, put, select}) {
+            const res = yield call
         }
     },
     reducers: {
