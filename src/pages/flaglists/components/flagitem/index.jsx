@@ -21,7 +21,7 @@ const FlagItem =  (props) => {
   }
   console.log('ele---->',ele)
   return (
-    <List className="flagitem-container">
+    <List className="flagitem-container has-bottombar">
       <>
       <ListItem alignItems="flex-start" className="flagitem-item">
         <ListItemAvatar>

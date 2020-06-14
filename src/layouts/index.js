@@ -9,12 +9,17 @@ import Tab from '@material-ui/core/Tab';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import FlagIcon from '@material-ui/icons/Flag';
 import ControlPointRoundedIcon from '@material-ui/icons/ControlPointRounded';
+import router from 'umi/router';
 
 function BasicLayout(props) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState('/');
 
   const handleChange = (event, newValue) => {
+    // const {value} = event
+    // console.log('value---->',event.Target)
+    console.log('newValue---->',newValue)
     setValue(newValue);
+    router.push(newValue)
   };
   return (
     <div className="normal">
@@ -34,9 +39,9 @@ function BasicLayout(props) {
         className="tabs-container"
         aria-label="icon label tabs example"
       >
-        <Tab icon={<FlagIcon />} label="立志列表" />
-        <Tab icon={<ControlPointRoundedIcon />} label="新建立志" />
-        <Tab icon={<PersonPinIcon />} label="我的" />
+        <Tab icon={<FlagIcon />} label="立志列表" value="/" />
+        <Tab icon={<ControlPointRoundedIcon />} label="新建立志" value="/newflags" />
+        <Tab icon={<PersonPinIcon />} label="我的" value="/myflags" />
       </Tabs>
     </div>
   );

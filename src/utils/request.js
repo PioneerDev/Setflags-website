@@ -19,7 +19,7 @@ const errorHandler = (error)=> {
 const request = extend({
   prefix:baseurl,
   errorHandler,
-  credentials: 'include', 
+  credentials: 'omit', 
 });
 
 export default request;
