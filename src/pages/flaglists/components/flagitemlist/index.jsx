@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.less'
 import Flagitem from '../flagitem'
 
 export default (props) => {

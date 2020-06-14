@@ -1,6 +1,6 @@
 
 // ref: https://umijs.org/config/
-import * as routes from './src/config/route.js'
+import * as routes from './route.js'
 const path = require('path')
 
 
@@ -18,11 +18,11 @@ export default {
     ...routes.default
   ],
   alias: {
-    '@': resolve('src'),
-    '@PAGES': resolve('src/pages'),
-    '@SERVICES': resolve('src/services'),
-    '@CONFIG': resolve('src/config'),
-    '@UTILS': resolve('src/utils')
+    '@': resolve('../src'),
+    '@PAGES': resolve('../src/pages'),
+    '@SERVICES': resolve('../src/services'),
+    '@CONFIG': resolve('../src/config'),
+    '@UTILS': resolve('../src/utils')
   },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html

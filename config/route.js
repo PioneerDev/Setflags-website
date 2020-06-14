@@ -8,5 +8,12 @@ module.exports = [
         {path:'/newflags',component:'../pages/newflags/index'},
         {path:'/myflags',component:'../pages/myflags/index'}
       ]
+    },
+    {
+      path: '/newflags',
+      component: '../layouts/index',
+      routes: [
+        {path: '/newflags', component: '../pages/newflags/index'}
+      ]
     }
   ]
