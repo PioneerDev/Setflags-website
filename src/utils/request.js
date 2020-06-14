@@ -1,6 +1,7 @@
 
 import { extend } from 'umi-request';
 
+const {BASEURL:baseurl} = process.env
 
 const errorHandler = (error)=> {
   const { response } = error;
@@ -16,6 +17,7 @@ const errorHandler = (error)=> {
 
 
 const request = extend({
+  prefix:baseurl,
   errorHandler,
   credentials: 'include', 
 });
