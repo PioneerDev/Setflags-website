@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'dva'
 import './index.less'
 
-const DetailInfo = (props)=>{
+const Rewards = (props)=>{
   return (
     <div>
-      detailInfo
+      rewards
     </div>
   )
 }
 
-export default connect(({flag})=>({flag}))(DetailInfo)
+export default connect(({flag})=>({flag}))(Rewards)
