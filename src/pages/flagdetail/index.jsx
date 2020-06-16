@@ -2,12 +2,9 @@ import React from 'react'
 import { connect } from 'dva'
 import './index.less'
 import { makeStyles } from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField'
-// import Button from '@material-ui/core/Button'
-// import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent'
-import { useForm, Controller } from "react-hook-form"
+import { useForm } from "react-hook-form"
 
 const useStyles = makeStyles({
   root: {
@@ -68,44 +65,6 @@ const FlagDetail = (props)=>{
           </Typography>
           
         </CardContent>
-
-        {/* <Controller
-          as={<TextField id="task-basic" label="任务" variant="filled" className="newflags-item"></TextField>}
-          name="task"
-          control={control}
-          defaultValue=''
-        />
-
-        <Controller
-          as={
-            <TextField id="days-basic" label="天数" variant="filled" className="newflags-item"></TextField>
-          }
-          name="days"
-          control={control}
-          defaultValue=''
-        />
-
-        <Controller
-          as={
-            <TextField id="maxWitness-basic" label="最大奖励" variant="filled" className="newflags-item"></TextField>
-          }
-          name="max_witness"
-          control={control}
-          defaultValue=''
-        />
-
-        <Controller
-          as={
-            <TextField id="maxWitness-basic" label="完成时间" variant="filled" className="newflags-item"></TextField>
-          }
-          control={control}
-          name="times_achieved"
-          defaultValue=''
-        />
-
-        <Button variant="contained" color="primary" className="newflags-submit" size="large" type="submit">
-          点击新建
-        </Button> */}
       </form>
     </div>
   )
