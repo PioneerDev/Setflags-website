@@ -41,7 +41,7 @@ const FlagDetail = (props)=>{
       <form action="" className="newflags-container" noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <div className="newflags-title">金马立志详情</div>
 
-        <CardContent class='typographyBox'>
+        <CardContent className='typographyBox'>
           <Typography className={classes.pos1} color="textSecondary" gutterBottom>
             立志任务: 每天走步5小时
           </Typography>

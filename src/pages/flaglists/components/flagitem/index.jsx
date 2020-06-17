@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core'
 import './index.less'
 import { connect } from 'dva'
+import router from 'umi/router';
 
 const FlagItem =  (props) => {
   const {ele} = props
@@ -20,12 +21,21 @@ const FlagItem =  (props) => {
     closed: '已关闭'
   }
   console.log('ele---->',ele)
+  const toDetail=()=>{
+    console.log('111',ele)
+    router.push({
+      pathname: '/flagdetail',
+      query: {
+        ...ele
+      }
+    })
+  }
   return (
-    <List className="flagitem-container has-bottombar">
+    <List className="flagitem-container has-bottombar" onClick={()=>toDetail()}>
       <>
       <ListItem alignItems="flex-start" className="flagitem-item">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
+          <Avatar alt="Remy Sharp" src={ele.payer_avatar_url} />
         </ListItemAvatar>
         <ListItemText
           primary={`${ele.task}`}

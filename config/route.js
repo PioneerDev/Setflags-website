@@ -1,21 +1,19 @@
 // use export error,so change to module.exports
 module.exports = [
+    // {
+    //   path: '/',
+    //   component: '../layouts/basic/index',
+    //   routes: [
+    //     { path: '/', component: '../pages/flaglists/index' },
+    //     {path:'/newflags',component:'../pages/newflags/index'},
+    //     {path:'/myflags',component:'../pages/myflags/index'}
+    //   ]
+    // },
     {
       path: '/',
-      component: '../layouts/index',
+      component: '../layouts/simple/index',
       routes: [
-        { path: '/', component: '../pages/flaglists/index' },
-        {path:'/newflags',component:'../pages/newflags/index'},
-        {path:'/myflags',component:'../pages/myflags/index'},
-        // {path:'/myflagss',component:'../pages/myflags/index'},
-        {path:'/flagdetail',component:'../pages/flagdetail/index'}
-      ]
-    },
-    {
-      path: '/newflags',
-      component: '../layouts/index',
-      routes: [
-        {path: '/newflags', component: '../pages/newflags/index'}
-      ]
+        {path:'/flagdetail',component: '../pages/flagdetail/index'}
+      ]     
     }
   ]
