@@ -5,7 +5,20 @@ import './index.less'
 const Evidence = (props)=>{
   return (
     <div>
-      evidence
+      <EvidenceItem></EvidenceItem>
+    </div>
+  )
+}
+
+
+const EvidenceItem = (props)=>{
+  const { evidenceUrl, time } = this.props
+  return(
+    <div>
+      <div>
+        <image src={evidenceUrl}></image>
+      </div>
+      <div>{time}</div>
     </div>
   )
 }

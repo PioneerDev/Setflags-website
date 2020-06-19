@@ -8,6 +8,8 @@ const DetailInfo = (props)=>{
       <div className="detailinfo-info">
         <div className="detailinfo-avatar">
           <img src="https://mixin-images.zeromesh.net/ml7tg1ZGrQt6IJSvEusWFfthosOB98GWN7r4EkmgSP8tbJHxK7OWki9zfZFFDCDOJE0nlLBR6dc4nbUguXE3Bg4=s128" alt=""/>
+          <div>Jerry</div>
+          <div>做10次俯卧撑</div>
         </div>
         <div className="detailinfo-button">
           <Button variant="contained" color="primary">
@@ -19,7 +21,7 @@ const DetailInfo = (props)=>{
         </div>
         {/* //TODO: comment*/}
       </div>
-      <div></div>
+      <div>1BOX</div>
     </div>
   )
 }
