@@ -1,5 +1,38 @@
 .detailinfo {
   &-container {
+    background: #757ce8;
+    color: white;
+  }
+  &-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  &-avatar {
+    width: 76px;
+    height: 76px;
+    margin-top:32px;
+    img {
+      width:100%;
+      border-radius: 50%;
+    }
+  }
+  &-name {
+    font-size: 24px;
+    margin:16px 0;
+  }
+  &-task {
+    margin-bottom: 60px;
+  }
+  &-rewards {
     background: #fff;
+    padding: 8px 20px;
+    color:#000;
+    margin-top:32px;
+    text-align:left;
+    border-bottom: 1px solid #efefef;
+  }
+  &-unit {
+    margin-left: 5px;
   }
 }
