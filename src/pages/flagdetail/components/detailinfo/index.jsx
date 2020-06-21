@@ -3,6 +3,7 @@ import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
+  console.log('detailinfo props---->',props)
   return (
     <div className="detailinfo-container">
       <div className="detailinfo-info">

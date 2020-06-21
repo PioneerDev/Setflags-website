@@ -5,7 +5,7 @@ export default {
     code: 200,
     'data|5': [
       {
-        "id": "@string",
+        "id": "1",
         "payer_id": "@string",
         "task": "每天读英语",
         "days": "@integer(60, 100)", // todo
@@ -16,7 +16,7 @@ export default {
         "status": "paid"
       },
       {
-        "id": "@string",
+        "id": "2",
         "payer_id": "@string",
         "task": "每天写程序",
         "days": "@integer(60, 100)", // todo
@@ -27,5 +27,18 @@ export default {
         "status": "paid"
       }
     ]
+  }),
+  '/flags/1/evidences':mockjs.mock({
+    code:200,
+    'data|1-5':[
+      {
+        "attachement_id:": "jddisas",
+        "flag_id":"321",
+        "type":"image",
+        "url":"http://dummyimage.com/100x150",
+        "create_at":"2020_01_04 22:00:32"
+      }
+    ]
+
   })
 }
