@@ -1,0 +1,36 @@
+.flagitem {
+  &-container {
+    width: '100%';
+    min-width: 275px;
+    max-width: '36ch';
+  }
+  &-item {
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+  }
+  &-status {
+    padding-top: 8px;
+  }
+}
+
+@media only screen and (-webkit-device-pixel-ratio: 3) and (device-height: 812px) and (device-width: 375px) {
+  .has-bottombar {
+    height: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-bottom: 34px;
+  }
+  ​
+  .has-bottombar:after {
+    content: '';
+    z-index: 9999;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 34px;
+    background: #fff;
+  }
+}
+
