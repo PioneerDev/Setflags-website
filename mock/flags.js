@@ -39,6 +39,8 @@ export default {
         "create_at":"2020_01_04 22:00:32"
       }
     ]
-
+  }),
+  '/flag':mockjs.mock({
+    code:200
   })
 }

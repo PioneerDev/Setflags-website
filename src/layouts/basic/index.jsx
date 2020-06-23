@@ -10,13 +10,17 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import FlagIcon from '@material-ui/icons/Flag';
 import ControlPointRoundedIcon from '@material-ui/icons/ControlPointRounded';
 import router from 'umi/router';
+import { connect } from 'dva'
 
 function BasicLayout(props) {
   const [value, setValue] = React.useState('/');
-
+  console.log('layout props--->', props)
+  //TODO: remember to open
+  // const {dispatch} = props
+  // dispatch({
+  //   type: 'flag/getUserCode'
+  // })
   const handleChange = (event, newValue) => {
-    // const {value} = event
-    // console.log('value---->',event.Target)
     console.log('newValue---->',newValue)
     setValue(newValue);
     router.push(newValue)
@@ -47,4 +51,4 @@ function BasicLayout(props) {
   );
 }
 
-export default BasicLayout;
+export default connect(({flag})=>({flag}))(BasicLayout)

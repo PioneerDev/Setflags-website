@@ -1,10 +1,12 @@
-import { getFlagList,getEvidenceList } from '@SERVICES/flag'
+import { getFlagList,getEvidenceList,newFlag } from '@SERVICES/flag'
+import router from 'umi/router';
 
 export default {
     namespace: 'flag',
     state: {
         flagList: [],
-        flagDetail: null
+        flagDetail: null,
+        userCode: null
     },
     effects: {
         * getFlagList(payload, {call, put, select}) {
@@ -25,7 +27,18 @@ export default {
                     payload:res.data
                 })
             }
-        }
+        },
+        * getUserCode(payload,{call,put}){
+            yield put({
+                type: 'getUserCodeFn'
+            })    
+        },
+        * newFlag(payload, {call, put}) {
+            const res = yield call(newFlag, payload)
+            if(res.code === 200) {
+                router.push('/addFlagsSuccess')
+            }
+        }  
     },
     reducers: {
         changeFlaglist(state, {payload}) {
@@ -40,6 +53,12 @@ export default {
             return {
                 ...state,
                 flagDetail:[...payload]
+            }
+        },
+        getUserCodeFn(state, {payload}) {
+            const {userCode} = state
+            if(!userCode) {
+                window.location.href = `https://mixin.one/oauth/authorize?client_id=8e932025-b516-4099-8d3f-a8acda46d82f&scope=PROFILE:READ+ASSETS:READ&response_type=code`
             }
         }
     }

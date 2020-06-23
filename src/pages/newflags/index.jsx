@@ -10,6 +10,10 @@ const NewFlags = (props)=>{
   const onSubmit = (data, e) => {
     console.log('data----->',data)
     console.log('e------>',e)
+    const {dispatch} = props
+    dispatch({
+      type: 'flag/newFlag'
+    })
   }
   return(
     <div>

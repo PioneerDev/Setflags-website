@@ -7,3 +7,7 @@ export async function getFlagList() {
 export async function getEvidenceList(flagid) {
   return request(`/flags/${flagid}/evidences`)
 }
+
+export async function newFlag() {
+  return request('/flag')
+}
