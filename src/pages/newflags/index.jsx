@@ -4,6 +4,7 @@ import './index.less'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { useForm, Controller } from "react-hook-form"
+import { DateTimePicker } from "@material-ui/pickers"
 
 const NewFlags = (props)=>{
   const { handleSubmit, control } = useForm()
@@ -12,7 +13,8 @@ const NewFlags = (props)=>{
     console.log('e------>',e)
     const {dispatch} = props
     dispatch({
-      type: 'flag/newFlag'
+      type: 'flag/newFlag',
+      payload: data
     })
   }
   return(
@@ -46,7 +48,10 @@ const NewFlags = (props)=>{
 
         <Controller 
           as={
-            <TextField id="maxWitness-basic" label="完成时间" variant="filled" className="newflags-item"></TextField>
+            <DateTimePicker
+              label="完成时间"
+              inputVariant="outlined"
+            />
           }
           control={control}
           name="times_achieved"

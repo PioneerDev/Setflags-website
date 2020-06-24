@@ -16,6 +16,7 @@
     "cross-env": "^7.0.2",
     "dva": "^2.6.0-beta.6",
     "react": "^16.8.6",
+    "react-datepicker": "^3.0.0",
     "react-dom": "^16.8.6",
     "react-hook-form": "^5.7.2",
     "umi-plugin-gh-pages": "^0.2.0"

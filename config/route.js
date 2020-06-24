@@ -8,10 +8,17 @@ module.exports = [
       ]     
     },
     {
-      path: '/myflags',
+      path: '/myflagslist',
       component: '../layouts/simple/index',
       routes: [
         {path:'/myflags', component: '../pages/myflaglists/index'}
+      ]
+    },
+    {
+      path: '/addflagsuccess',
+      component: '../layouts/simple/index',
+      routes:[
+        {path:'/addflagsuccess', component:'../pages/addflagsuccess/index'}
       ]
     },
     {

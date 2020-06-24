@@ -35,8 +35,11 @@ export default {
         },
         * newFlag(payload, {call, put}) {
             const res = yield call(newFlag, payload)
+            console.log('newflag payload--->', payload)
             if(res.code === 200) {
-                router.push('/addFlagsSuccess')
+                router.push('/addflagsuccess')
+            } else {
+                router.push('/addflagfail')
             }
         }  
     },
