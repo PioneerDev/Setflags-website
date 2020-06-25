@@ -3,13 +3,11 @@ import { connect } from 'dva'
 import './index.less'
 
 const Evidence = (props)=>{
-  console.log('props--->', props)
-  const {flag:{flagDetail}} = props
-  console.log('flagDetail-->', flagDetail)
+  const {flag:{flagDetail:{evidence}}} = props
   return (
     <div className="evidence-container">
-      {flagDetail&&flagDetail.map((ele,idx)=>(
-        <EvidenceItem type={ele.type} evidenceUrl={ele.url} time={ele.time} key={idx}></EvidenceItem>
+      {evidence&&evidence.map((ele,idx)=>(
+        <EvidenceItem type={ele.type} evidenceUrl={ele.url} time={ele.create_at} key={idx}></EvidenceItem>
       ))}
     </div>
   )
@@ -18,7 +16,6 @@ const Evidence = (props)=>{
 
 const EvidenceItem = (props)=>{
   const { evidenceUrl, time } = props
-  console.log('ev--->',evidenceUrl)
   return(
     <div className="evidence-item">
       <div className="evidence-item-media">

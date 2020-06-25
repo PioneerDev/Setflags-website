@@ -23,7 +23,7 @@ export default {
             const res = yield call (getEvidenceList,1)
             if(res.code === 200) {
                 yield put({
-                    type: 'listFlagDetail',
+                    type: 'listEvidence',
                     payload:res.data
                 })
             }
@@ -41,6 +41,13 @@ export default {
             } else {
                 router.push('/addflagfail')
             }
+        },
+        * toDetail({payload}, {call, put}) {
+            console.log("*toDetail -> payload", payload)
+            yield put({
+                type: 'toDetailFn',
+                payload
+            })
         }  
     },
     reducers: {
@@ -51,17 +58,25 @@ export default {
                 flagList:[...payload]
             }
         },
-        listFlagDetail(state, {payload}) {
+        listEvidence(state, {payload}) {
             console.log('listFlagDetail payload--->',payload)
             return {
                 ...state,
-                flagDetail:[...payload]
+                flagDetail:{...state.flagDetail,evidence:[...payload]}
             }
         },
         getUserCodeFn(state, {payload}) {
             const {userCode} = state
             if(!userCode) {
                 window.location.href = `https://mixin.one/oauth/authorize?client_id=8e932025-b516-4099-8d3f-a8acda46d82f&scope=PROFILE:READ+ASSETS:READ&response_type=code`
+            }
+        },
+        toDetailFn(state, {payload}) {
+            console.log("toDetailFn -> state", state)
+            console.log("toDetailFn -> payload", payload)
+            return {
+                ...state,
+                flagDetail:{...state.flagDetail,detailInfo:{...payload}}
             }
         }
     }

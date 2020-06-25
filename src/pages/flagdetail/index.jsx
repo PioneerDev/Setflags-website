@@ -7,17 +7,19 @@ import './index.less'
 
 const FlagDetail = (props)=>{
   console.log('props---->',props)
+  console.log('location',window.location)
   const {flag:{flagDetail},dispatch} = props
+  const {evidence} = flagDetail
   // TODO: 获取id
   useEffect(()=>{
     console.log('flagDetail--->',flagDetail)
-    if(!flagDetail) {
+    if(!evidence) {
       dispatch({
         type: 'flag/getEvidenceList'
       })
     }
   },
-    [dispatch, flagDetail]
+    [dispatch, flagDetail,evidence]
   )
 
   return(

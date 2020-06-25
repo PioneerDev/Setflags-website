@@ -3,26 +3,37 @@ import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
-  console.log('detailinfo props---->',props)
+  console.log("DetailInfo -> props", props)
+  const {flag:{
+    flagDetail:{
+      detailInfo
+    }
+  }} = props
+  console.log("DetailInfo -> detailinfo", detailInfo)
+
+  const flagOperation = (op) =>{
+
+  }
+
   return (
     <div className="detailinfo-container">
       <div className="detailinfo-info">
          <div className="detailinfo-avatar">
-            <img src="https://mixin-images.zeromesh.net/ml7tg1ZGrQt6IJSvEusWFfthosOB98GWN7r4EkmgSP8tbJHxK7OWki9zfZFFDCDOJE0nlLBR6dc4nbUguXE3Bg4=s128" alt=""/>
+            <img src={detailInfo.payer_avatar_url} alt=""/>
           </div>
-          <div className="detailinfo-name">Jerry</div>
-          <div className="detailinfo-task">做10次俯卧撑</div>
+          <div className="detailinfo-name">{detailInfo.payer_name}</div>
+          <div className="detailinfo-task">{detailInfo.task}</div>
         </div>
         <div className="detailinfo-button">
-          <Button variant="contained" color="primary" style={{marginRight:10}}>
+          <Button variant="contained" color="primary" style={{marginRight:10}} onClick={()=>flagOperation('yes')}>
             已完成
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={()=>flagOperation('no')}>
             未完成
           </Button>
         </div>
         {/* //TODO: comment*/}
-      <div className="detailinfo-rewards">1.000000000<span className="detailinfo-unit">BOX</span></div>
+      <div className="detailinfo-rewards">{detailInfo.max_witness}<span className="detailinfo-unit">BOX</span></div>
     </div>
   )
 }

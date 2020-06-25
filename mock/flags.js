@@ -8,8 +8,10 @@ export default {
         "id": "1",
         "payer_id": "@string",
         "task": "每天读英语",
+        "payer_name": "夜夜(王啸诗)",
         "days": "@integer(60, 100)", // todo
         "max_witness": "@integer(60, 100)", // todo
+        "payer_avatar_url": "https://mixin-images.zeromesh.net/EkbdjRr3qdjL9ItBil-_DHhiDvCkauFYlzOiHlTXFD53AY3W3_5q0v9hOyroJuYfpDKT4NFLvY9RgSmewzfoFA=s256",
         "asset_id": "@string",
         "amount": "@integer(60, 100)", // todo
         "times_achieved": "@integer(60, 100)", // todo
@@ -19,8 +21,10 @@ export default {
         "id": "2",
         "payer_id": "@string",
         "task": "每天写程序",
+        "payer_name": "夜夜(王啸诗)",
         "days": "@integer(60, 100)", // todo
         "max_witness": "@integer(60, 100)", // todo
+        "payer_avatar_url": "https://mixin-images.zeromesh.net/EkbdjRr3qdjL9ItBil-_DHhiDvCkauFYlzOiHlTXFD53AY3W3_5q0v9hOyroJuYfpDKT4NFLvY9RgSmewzfoFA=s256",
         "asset_id": "@string",
         "amount": "@integer(60, 100)", // todo
         "times_achieved": "@integer(60, 100)", // todo

@@ -13,7 +13,7 @@ import { connect } from 'dva'
 import router from 'umi/router';
 
 const FlagItem =  (props) => {
-  const {ele} = props
+  const {ele,dispatch} = props
   const statusKV = {
     paid: '已支付',
     unverified: '未验证',
@@ -23,11 +23,13 @@ const FlagItem =  (props) => {
   console.log('ele---->',ele)
   const toDetail=()=>{
     console.log('111',ele)
-    router.push({
-      pathname: '/flagdetail',
-      query: {
-        ...ele
-      }
+    dispatch({
+      type:'flag/toDetail',
+      payload: ele
+    }).then(res=>{
+      router.push({
+        pathname: '/flagdetail',
+      })
     })
   }
   return (
