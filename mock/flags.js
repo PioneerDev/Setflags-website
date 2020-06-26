@@ -46,5 +46,11 @@ export default {
   }),
   '/flag':mockjs.mock({
     code:200
+  }),
+  '/flags/1/yes':mockjs.mock({
+    code:200
+  }),
+  '/flags/1/no':mockjs.mock({
+    code:200
   })
 }

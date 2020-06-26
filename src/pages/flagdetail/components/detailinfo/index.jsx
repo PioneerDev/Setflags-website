@@ -12,7 +12,14 @@ const DetailInfo = (props)=>{
   console.log("DetailInfo -> detailinfo", detailInfo)
 
   const flagOperation = (op) =>{
-
+    const {dispatch} = props
+    dispatch({
+      type:'flag/opFlag',
+      payload: {
+        flagid:detailInfo.id,
+        op
+      }
+    }) 
   }
 
   return (

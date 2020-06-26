@@ -11,3 +11,8 @@ export async function getEvidenceList(flagid) {
 export async function newFlag() {
   return request('/flag')
 }
+
+export async function opFlag(params) {
+  const {flagid, op} = params
+  return request(`/flags/${flagid}/${op}`)
+}

@@ -1,4 +1,4 @@
-import { getFlagList,getEvidenceList,newFlag } from '@SERVICES/flag'
+import { getFlagList,getEvidenceList,newFlag, opFlag } from '@SERVICES/flag'
 import router from 'umi/router';
 
 export default {
@@ -33,7 +33,7 @@ export default {
                 type: 'getUserCodeFn'
             })    
         },
-        * newFlag(payload, {call, put}) {
+        * newFlag({payload}, {call, put}) {
             const res = yield call(newFlag, payload)
             console.log('newflag payload--->', payload)
             if(res.code === 200) {
@@ -48,7 +48,13 @@ export default {
                 type: 'toDetailFn',
                 payload
             })
-        }  
+        },
+        * opFlag({payload}, {call, put}) {
+            const res = yield call(opFlag, payload)
+            if(res.code===200) {
+                console.log('已见证')
+            }
+        }
     },
     reducers: {
         changeFlaglist(state, {payload}) {
