@@ -72,9 +72,9 @@ export default {
             }
         },
         getUserCodeFn(state, {payload}) {
-            const {userCode} = state
+            const userCode = localStorage.getItem('userCode')
             if(!userCode) {
-                window.location.href = `https://mixin.one/oauth/authorize?client_id=8e932025-b516-4099-8d3f-a8acda46d82f&scope=PROFILE:READ+ASSETS:READ&response_type=code`
+                window.location.href = `https://mixin.one/oauth/authorize?client_id=bcec843a-d431-4bf0-8e82-cc10079d20ac&scope=PROFILE:READ+ASSETS:READ&response_type=code`
             }
         },
         toDetailFn(state, {payload}) {

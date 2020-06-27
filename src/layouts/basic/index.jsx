@@ -11,6 +11,8 @@ import FlagIcon from '@material-ui/icons/Flag';
 import ControlPointRoundedIcon from '@material-ui/icons/ControlPointRounded';
 import router from 'umi/router';
 import { connect } from 'dva'
+import saveUserCode from '@UTILS/saveUserCode'
+console.log("saveUserCode", saveUserCode)
 
 function BasicLayout(props) {
   const [value, setValue] = React.useState('/');
@@ -20,6 +22,11 @@ function BasicLayout(props) {
   // dispatch({
   //   type: 'flag/getUserCode'
   // })
+  const {location:{query:{code}}} = props
+  console.log('code---->',code)
+  if(code) {
+    saveUserCode(code)
+  }
   const handleChange = (event, newValue) => {
     console.log('newValue---->',newValue)
     setValue(newValue);
