@@ -12,7 +12,7 @@ const errorHandler = (error)=> {
     if(response.status === 401) {
       setTimeout(()=>{
         window.location.href = `https://mixin.one/oauth/authorize?client_id=bcec843a-d431-4bf0-8e82-cc10079d20ac&scope=PROFILE:READ+ASSETS:READ&response_type=code`
-      },10000)
+      },1000)
 
     }
     console.error(response.statusText)
