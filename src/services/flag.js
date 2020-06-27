@@ -8,8 +8,11 @@ export async function getEvidenceList(flagid) {
   return request(`/flags/${flagid}/evidences`)
 }
 
-export async function newFlag() {
-  return request('/flag')
+export async function newFlag(params) {
+  return request('/flag',{
+    method: 'POST',
+    data: params
+  })
 }
 
 export async function opFlag(params) {

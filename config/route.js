@@ -22,6 +22,13 @@ module.exports = [
       ]
     },
     {
+      path: '/addflagfail',
+      component: '../layouts/simple/index',
+      routes:[
+        {path:'/addflagfail', component:'../pages/addflagfail/index'}
+      ]
+    },
+    {
       path: '/',
       component: '../layouts/basic/index',
       routes:[

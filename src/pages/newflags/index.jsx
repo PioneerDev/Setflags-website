@@ -14,23 +14,13 @@ import {
   DateTimePicker,
 } from 'formik-material-ui-pickers';
 import Button from '@material-ui/core/Button'
-import { useForm, Controller } from "react-hook-form"
 import {Formik, Form, Field} from 'formik';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
 const NewFlags = (props)=>{
     const {dispatch} = props
-  // const { handleSubmit, control, watch } = useForm()
-  // const dateReceived = watch("expiryAt");
-  // const onSubmit = (data, e) => {
-  //   console.log('data----->',data)
-  //   console.log('e------>',e)
-  //   dispatch({
-  //     type: 'flag/newFlag',
-  //     payload: data
-  //   })
-  // }
+
   const requireValidate = (value, name) =>{
     let error
     if(!value) {
@@ -65,7 +55,7 @@ const NewFlags = (props)=>{
         onSubmit={(values, {setSubmitting}) => {
             dispatch({
               type: 'flag/newFlag',
-              payload: values
+              payload: {...values,days:Number(values.days)}
             })
           }}
         initialValues={{
@@ -121,58 +111,6 @@ const NewFlags = (props)=>{
           </MuiPickersUtilsProvider>
         )}
         />
-      {/* <form action="" className="newflags-container" noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-        <div className="newflags-title">新建立志</div>
-        <Controller 
-          as={<TextField id="task-basic" label="任务" variant="filled" className="newflags-item"></TextField>}
-          name="task"
-          control={control}
-          defaultValue=''
-        />
-
-       <Controller 
-          as={
-            <TextField id="days-basic" label="天数" variant="filled" className="newflags-item"></TextField>
-          }
-          name="days"
-          control={control}
-          defaultValue=''
-       />
-
-       <Controller 
-          as={
-            <TextField id="maxWitness-basic" label="最大奖励" variant="filled" className="newflags-item"></TextField>
-          }
-          name="max_witness"
-          control={control}
-          defaultValue=''
-       />
-
-        <Controller 
-          as={
-            <ReactDatePicker
-            dateFormat="d MMM yyyy"
-            minDate={new Date()}
-            selected={
-              dateReceived?.value ? new Date(dateReceived.value) : null
-            }
-            showTimeSelect={false}
-            todayButton="Today"
-            dropdownMode="select"
-            isClearable
-            placeholderText="点击选择时间"
-            shouldCloseOnSelect
-          />
-          }
-          control={control}
-          name="times_achieved"
-          defaultValue=''
-        />
-
-        <Button variant="contained" color="primary" className="newflags-submit" size="large" type="submit">
-           点击新建
-        </Button>
-      </form> */}
     </div>
   )
 }

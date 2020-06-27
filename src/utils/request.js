@@ -23,12 +23,14 @@ const errorHandler = (error)=> {
 };
 
 const userToken = localStorage.getItem('userToken')
+const userId =localStorage.getItem('userId')
 const request = extend({
   prefix:baseurl,
   errorHandler,
   credentials: 'omit', 
   headers:{
-    Authorization:userToken ? ` Bearer ${userToken}`: ''
+    Authorization:userToken ? ` Bearer ${userToken}`: '',
+    'x-user-id': `${userId}`
   }
 });
 
