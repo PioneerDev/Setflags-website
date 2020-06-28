@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { connect } from 'dva'
 import './index.less'
 import {
@@ -13,13 +13,22 @@ import {
   DatePicker,
   DateTimePicker,
 } from 'formik-material-ui-pickers';
+import {MenuItem} from '@material-ui/core';
 import Button from '@material-ui/core/Button'
 import {Formik, Form, Field} from 'formik';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
 const NewFlags = (props)=>{
-    const {dispatch} = props
+  const {dispatch,assets:{assetsInfo}} = props
+
+  useEffect(()=>{
+    if(!assetsInfo) {
+      dispatch({
+        type:'assets/getAssetsInfo'
+      })
+    }
+  },[assetsInfo, dispatch])
 
   const requireValidate = (value, name) =>{
     let error
@@ -55,14 +64,18 @@ const NewFlags = (props)=>{
         onSubmit={(values, {setSubmitting}) => {
             dispatch({
               type: 'flag/newFlag',
-              payload: {...values,days:Number(values.days)}
+              payload: {...values,days:Number(values.days),max_witness:Number(values.max_witness),amount:Number(values.amount),
+              times_achieved:Number(values.times_achieved)}
             })
           }}
         initialValues={{
           task:'',
           days:'',
-          maxwitness:'',
-          date:new Date()
+          amount: 0,
+          asset_id: 'none',
+          max_witness:'',
+          times_achieved:1
+          // times_achieved:new Date()
         }}
         render={({submitForm, isSubmitting, values, setFieldValue}) => (
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -87,16 +100,52 @@ const NewFlags = (props)=>{
             <Field
               component={TextField}
               type="text"
-              label="最大奖励"
-              name="maxwitness"
+              label="最多见证者人数"
+              name="max_witness"
               className="newflags-item"
-              validate={(value)=>requirefloatnumberValidate(value, '最大奖励')}
+              validate={(value)=>requirefloatnumberValidate(value, '最多见证者人数')}
             />
-            <Field 
+            <Field
+              component={TextField}
+              type="text"
+              label="数量"
+              name="amount"
+              className="newflags-item"
+              validate={(value)=>requirefloatnumberValidate(value, '数量')}
+            />
+            <Field
+              component={TextField}
+              type="text"
+              name="asset_id"
+              label="With Select"
+              select
+              variant="standard"
+              helperText="Please select Range"
+              margin="normal"
+              className="newflags-item"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            >
+              {assetsInfo&&assetsInfo.map((option,idx) => (
+                <MenuItem key={idx} value={option.asset_id}>
+                  {option.symbol}
+                </MenuItem>
+              ))}
+            </Field>
+            {/* <Field 
               component={DatePicker} 
-              name="date" 
+              name="times_achieved" 
               label="结束时间" 
               className="newflags-item"
+            /> */}
+            <Field
+              component={TextField}
+              type="text"
+              label="完成时间天数"
+              name="times_achieved"
+              className="newflags-item"
+              validate={(value)=>requirefloatnumberValidate(value, '完成时间天数')}
             />
             <Button
               variant="contained"
@@ -116,4 +165,4 @@ const NewFlags = (props)=>{
 }
 
 
-export default connect(({flag})=>({flag}))(NewFlags)
+export default connect(({flag,assets})=>({flag,assets}))(NewFlags)
