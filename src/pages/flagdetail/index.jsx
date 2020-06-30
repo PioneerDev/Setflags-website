@@ -9,18 +9,36 @@ const FlagDetail = (props)=>{
   console.log('props---->',props)
   console.log('location',window.location)
   const {flag:{flagDetail},dispatch} = props
-  const {evidence} = flagDetail
+  const {evidence,detailInfo,witness} = flagDetail
   // TODO: 获取id
   useEffect(()=>{
     console.log('flagDetail--->',flagDetail)
     if(!evidence) {
       dispatch({
-        type: 'flag/getEvidenceList'
+        type: 'flag/getEvidenceList',
+        payload: {
+          flagid: detailInfo.id
+        }
       })
     }
-  },
-    [dispatch, flagDetail,evidence]
-  )
+    if(!witness) {
+      dispatch({
+        type: 'flag/getWitness',
+        payload: {
+          flagid: detailInfo.id
+        }
+      })
+    }
+  },[detailInfo.id, dispatch, evidence, flagDetail, witness])
+
+  useEffect(()=>{
+    return ()=>{
+      console.log('clean up--->')
+      dispatch({
+        type: 'flag/clean'
+      })
+    }
+  },[dispatch])
 
   return(
     <div className="flagdetail-container">

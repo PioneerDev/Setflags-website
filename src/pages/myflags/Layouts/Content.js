@@ -45,7 +45,6 @@ export default function SimpleList() {
           </ListItemIcon>
           <ListItemText primary="设置" />
         </ListItem>
-
       </List>
       <Divider />
     </div>

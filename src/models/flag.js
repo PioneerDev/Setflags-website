@@ -1,4 +1,4 @@
-import { getFlagList,getEvidenceList,newFlag, opFlag } from '@SERVICES/flag'
+import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList } from '@SERVICES/flag'
 import router from 'umi/router';
 
 export default {
@@ -19,12 +19,24 @@ export default {
             }
             console.log('*getFlagList -> data', res)
         },
-        * getEvidenceList(payload, {call, put}) {
-            const res = yield call (getEvidenceList,1)
+        * getEvidenceList({payload}, {call, put}) {
+            console.log("*getEvidenceList -> payload", payload)
+            const {flagid} = payload
+            const res = yield call (getEvidenceList,flagid)
             if(res.code === 200) {
                 yield put({
                     type: 'listEvidence',
                     payload:res.data
+                })
+            }
+        },
+        * getWitness({payload}, {call, put}){
+            const {flagid} = payload
+            const res = yield call (getWitnessList, flagid)
+            if(res.code === 200) {
+                yield put({
+                    type: 'listwitness',
+                    payload: res.data
                 })
             }
         },
@@ -54,6 +66,11 @@ export default {
             if(res.code===200) {
                 console.log('已见证')
             }
+        },
+        * clean({payload}, {call, put}) {
+            yield put({
+                type: 'cleanFn'
+            })
         }
     },
     reducers: {
@@ -83,6 +100,18 @@ export default {
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,detailInfo:{...payload}}
+            }
+        },
+        listwitness(state, {payload}) {
+            return {
+                ...state,
+                flagDetail:{...state.flagDetail,witness:[...payload]}
+            }
+        },
+        cleanFn(state, {payload}) {
+            return {
+                ...state,
+                flagDetail:{...state.flagDetail,witness:null,evidence:null}
             }
         }
     }

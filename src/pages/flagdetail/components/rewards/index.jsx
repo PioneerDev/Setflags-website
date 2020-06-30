@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import { connect } from 'dva'
 import './index.less'
 
@@ -12,6 +12,7 @@ const Rewards = (props)=>{
 
 const RewardsItem = (props) => {
   const {avatarurl, name, time, amount, unit} = props
+
   return (
     <div className="rewards-item">
       <div className="rewards-item-info">

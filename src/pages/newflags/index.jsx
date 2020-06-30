@@ -142,10 +142,10 @@ const NewFlags = (props)=>{
             <Field
               component={TextField}
               type="text"
-              label="完成时间天数"
+              label="完成次数"
               name="times_achieved"
               className="newflags-item"
-              validate={(value)=>requirefloatnumberValidate(value, '完成时间天数')}
+              validate={(value)=>requirefloatnumberValidate(value, '完成次数')}
             />
             <Button
               variant="contained"
