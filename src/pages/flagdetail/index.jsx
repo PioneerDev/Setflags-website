@@ -21,6 +21,10 @@ const FlagDetail = (props)=>{
         }
       })
     }
+
+  },[detailInfo.id, dispatch, evidence, flagDetail])
+
+  useEffect(()=>{
     if(!witness) {
       dispatch({
         type: 'flag/getWitness',
@@ -29,7 +33,7 @@ const FlagDetail = (props)=>{
         }
       })
     }
-  },[detailInfo.id, dispatch, evidence, flagDetail, witness])
+  },[detailInfo.id, dispatch, witness])
 
   useEffect(()=>{
     return ()=>{
