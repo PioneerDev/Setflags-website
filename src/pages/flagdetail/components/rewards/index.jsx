@@ -3,9 +3,12 @@ import { connect } from 'dva'
 import './index.less'
 
 const Rewards = (props)=>{
+console.log("Rewards -> props", props)
+  const {flag:{flagDetail:{witness}}} = props
+  console.log("Rewards -> witness", witness)
   return (
     <div className="rewards-container">
-      <RewardsItem avatarurl="https://mixin-images.zeromesh.net/gj-3TbH_lYSvwLtp-gG_B8w6X68Jg6JqIojf5BLAA54xW0AxQXsOefMlFVbDgYbILs4hsBhqAeD4THfzqce-Enqq=s256" name="凯" time="2020-06-20 10:09:00" amount={1000} unit="Box"/>
+      {witness&&witness.map((ele,idx)=><RewardsItem avatarurl={ele.payee_avatar_url} name={ele.payee_name} time={ele.witnessed_time} amount={ele.amount} unit={ele.symbol} key={idx}/>)}
     </div>
   )
 }

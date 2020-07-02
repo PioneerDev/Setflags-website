@@ -17,6 +17,7 @@
     "@umijs/hooks": "^1.9.2",
     "cross-env": "^7.0.2",
     "date-fns": "^2.14.0",
+    "dayjs": "^1.8.28",
     "dva": "^2.6.0-beta.6",
     "formik": "^2.1.4",
     "formik-material-ui": "^2.0.0",

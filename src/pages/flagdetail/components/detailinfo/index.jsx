@@ -3,12 +3,16 @@ import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
+  // TODO: 见证
   console.log("DetailInfo -> props", props)
+  // const { user:{userInfo}} = props
   const {flag:{
     flagDetail:{
       detailInfo
     }
   }} = props
+  const userId =localStorage.getItem('userId')
+  const payerId = detailInfo.payer_id
   console.log("DetailInfo -> detailinfo", detailInfo)
 
   const flagOperation = (op) =>{
@@ -45,4 +49,4 @@ const DetailInfo = (props)=>{
   )
 }
 
-export default connect(({flag})=>({flag}))(DetailInfo)
+export default connect(({flag,user})=>({flag,user}))(DetailInfo)

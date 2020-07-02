@@ -21,5 +21,7 @@ export async function newFlag(params) {
 
 export async function opFlag(params) {
   const {flagid, op} = params
-  return request(`/flags/${flagid}/${op}`)
+  return request(`/flags/${flagid}/${op}`,{
+    method:'PUT'
+  })
 }
