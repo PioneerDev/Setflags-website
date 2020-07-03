@@ -1,28 +1,18 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import { connect } from 'dva'
+import './index.less'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-}));
-
-export default function ImageAvatars(props) {
-  const classes = useStyles();
-  const {userInfo} = props
+function ImageAvatars(props) {
+  console.log("ImageAvatars -> props", props)
+  const {user:{userInfo}} = props
   console.log("ImageAvatars -> userInfo", userInfo)
   return (
-    <div className={classes.root}>
-      <Avatar alt="Remy Sharp" src={userInfo.avatar_url} className={classes.large} />
-      <h1>{userInfo.full_name}</h1>
+    <div className='myflags-header-container'>
+      <Avatar alt="Remy Sharp" src={userInfo.avatar_url} className="myflags-header-avatar" />
+      <h3>{userInfo.full_name}</h3>
     </div>
   );
 }
+
+export default connect(({user})=>({user}))(ImageAvatars)

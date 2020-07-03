@@ -12,7 +12,6 @@ const FlagDetail = (props)=>{
   const {evidence,detailInfo,witness} = flagDetail
   // TODO: 获取id
   useEffect(()=>{
-    console.log('flagDetail--->',flagDetail)
     if(!evidence) {
       dispatch({
         type: 'flag/getEvidenceList',
@@ -22,7 +21,7 @@ const FlagDetail = (props)=>{
       })
     }
 
-  },[detailInfo.id, dispatch, evidence, flagDetail])
+  },[detailInfo.id, dispatch, evidence])
 
   useEffect(()=>{
     if(!witness) {

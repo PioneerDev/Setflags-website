@@ -14,12 +14,13 @@ export default {
         })
       }
     },
-    reducers: {
-      getUserInfoFn(state, {payload}) {
-        return {
-          ...state,
-          userInfo: {...payload}
-        }
+
+  },
+  reducers: {
+    getUserInfoFn(state, {payload}) {
+      return {
+        ...state,
+        userInfo: {...payload}
       }
     }
   }

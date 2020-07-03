@@ -5,14 +5,17 @@ import Content from './Layouts/Content'
 
 const MyFlags = (props) => {
     const {user:{userInfo},dispatch} = props
+    console.log("MyFlags -> props", props)
     useEffect(()=>{
-        dispatch({
-            type:'user/getUserInfo'
-        })
+        if(!userInfo) {
+            dispatch({
+                type:'user/getUserInfo'
+            })
+        }
     },[dispatch, userInfo])
     return (
         <div className="myflags-container">
-            <Header userInfo={userInfo} />
+            {userInfo&&<Header userInfo={userInfo} />}
             <Content />
         </div>
     )
