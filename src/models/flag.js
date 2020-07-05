@@ -1,4 +1,4 @@
-import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList } from '@SERVICES/flag'
+import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList,uploadEvidence } from '@SERVICES/flag'
 import router from 'umi/router';
 
 export default {
@@ -71,6 +71,13 @@ export default {
             yield put({
                 type: 'cleanFn'
             })
+        },
+        * uploadEvidence({payload}, {call, put}) {
+            const res = yield call(uploadEvidence, payload)
+            if(res.code === 200) {
+                console.log('上传成功-->')
+            }
+            console.log('res--->',)     
         }
     },
     reducers: {

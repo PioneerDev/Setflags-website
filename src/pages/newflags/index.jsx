@@ -21,6 +21,7 @@ import DateFnsUtils from '@date-io/date-fns';
 
 const NewFlags = (props)=>{
   const {dispatch,assets:{assetsInfo}} = props
+  console.log("NewFlags -> assetsInfo", assetsInfo&&assetsInfo.filter(ele=>ele.asset_id=='c6d0c728-2624-429b-8e0d-d9d19b6592fa')[0].symbol)
 
   useEffect(()=>{
     if(!assetsInfo) {
@@ -65,7 +66,7 @@ const NewFlags = (props)=>{
             dispatch({
               type: 'flag/newFlag',
               payload: {...values,days:Number(values.days),max_witness:Number(values.max_witness),amount:Number(values.amount),
-              times_achieved:Number(values.times_achieved)}
+              times_achieved:Number(values.times_achieved),symbol:assetsInfo&&assetsInfo.filter(ele=>ele.asset_id==values.asset_id)[0].symbol}
             })
           }}
         initialValues={{

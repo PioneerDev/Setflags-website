@@ -15,10 +15,10 @@ import router from 'umi/router';
 const FlagItem =  (props) => {
   const {ele,dispatch} = props
   const statusKV = {
-    paid: '已支付',
-    unverified: '未验证',
-    verified: '已验证',
-    closed: '已关闭'
+    "PAID": '已支付',
+    "UNVERIFIED": '未验证',
+    "VERIFIED": '已验证',
+    "CLOSED": '已关闭'
   }
   console.log('ele---->',ele)
   const toDetail=()=>{
@@ -41,6 +41,7 @@ const FlagItem =  (props) => {
         </ListItemAvatar>
         <ListItemText
           primary={`${ele.task}`}
+          className="flagitem-info"
           secondary={
             <>
               <Typography

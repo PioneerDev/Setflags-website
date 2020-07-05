@@ -12,6 +12,17 @@
   &-status {
     padding-top: 8px;
   }
+  &-info {
+    max-width: 64vw;
+    //TODO: 两行省略
+    > span {
+      overflow:hidden;
+      text-overflow:ellipsis;
+      display:-webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:2;
+    }
+  }
 }
 
 @media only screen and (-webkit-device-pixel-ratio: 3) and (device-height: 812px) and (device-width: 375px) {

@@ -25,3 +25,11 @@ export async function opFlag(params) {
     method:'PUT'
   })
 }
+
+export async function uploadEvidence(params) {
+  const {flagid, type, file} = params
+  return request(`/attachments?type=${type}&flag_id=${flagid}`,{
+    method: 'POST',
+    data: file
+  })
+}
