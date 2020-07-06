@@ -72,6 +72,10 @@ const DetailInfo = (props)=>{
           return (
             <div>已关闭</div>
           )
+          case 'DONE':
+            return (
+              <div>已完成</div>
+            )
         default:
           
       }   
