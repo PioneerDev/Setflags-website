@@ -9,8 +9,8 @@ export default {
         userCode: null
     },
     effects: {
-        * getFlagList(payload, {call, put, select}) {
-            const res = yield call(getFlagList)
+        * getFlagList({payload}, {call, put, select}) {
+            const res = yield call(getFlagList,payload)
             if(res.code === 200) {
                 yield put({
                     type: 'changeFlaglist',
@@ -18,6 +18,7 @@ export default {
                 })
             }
             console.log('*getFlagList -> data', res)
+            return res.total
         },
         * getEvidenceList({payload}, {call, put}) {
             console.log("*getEvidenceList -> payload", payload)
@@ -49,7 +50,9 @@ export default {
             const res = yield call(newFlag, payload)
             console.log('newflag payload--->', payload)
             if(res.code === 200) {
-                router.push('/addflagsuccess')
+                const {amount,asset,memo,recipient,trace} = res.data
+                window.location.href = `https://mixin.one/pay?return_to=www.baidu.com&recipient=${recipient}&asset=${asset}&amount=${amount}&trace=${trace}&memo=${memo}`
+                // router.push('/addflagsuccess')
             } else {
                 router.push('/addflagfail')
             }
@@ -85,7 +88,7 @@ export default {
             console.log('payload--->', payload)
             return {
                 ...state,
-                flagList:[...payload]
+                flagList:[...state.flagList,...payload]
             }
         },
         listEvidence(state, {payload}) {
@@ -119,6 +122,12 @@ export default {
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,witness:null,evidence:null}
+            }
+        },
+        clearFlagList(state, {payload}) {
+            return {
+                ...state,
+                flagList: []
             }
         }
     }

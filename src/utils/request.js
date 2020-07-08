@@ -6,7 +6,6 @@ const {BASEURL:baseurl} = process.env
 const errorHandler = (error)=> {
   console.log("errorHandler -> error", error)
   const { response } = error;
-  console.log("errorHandler -> response", response)
   if (response && response.status) {
     // const { status, url } = response;
     if(response.status === 401) {

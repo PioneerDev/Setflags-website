@@ -1,7 +1,8 @@
 import request from '@UTILS/request'
 
-export async function getFlagList() {
-  return request(`/flags`);
+export async function getFlagList(params) {
+  const {current_page,page_size} = params
+  return request(`/flags?current_page=${current_page}&page_size=${page_size}`);
 }
 
 export async function getEvidenceList(flagid) {

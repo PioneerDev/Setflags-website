@@ -18,7 +18,8 @@ const FlagItem =  (props) => {
     "PAID": '已支付',
     "UNVERIFIED": '未验证',
     "VERIFIED": '已验证',
-    "CLOSED": '已关闭'
+    "CLOSED": '已关闭',
+    "DONE":"已完成"
   }
   console.log('ele---->',ele)
   const toDetail=()=>{
