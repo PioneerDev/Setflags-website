@@ -9,7 +9,6 @@ const FlagList = (props)=>{
     const {flag:{flagList},dispatch} = props
     // const {dispatch} = props
     useEffect(()=>{
-        console.log('flagList-->', flagList)
         if(flagList.length === 0) {
             dispatch({
                 type: 'flag/getFlagList',
@@ -18,7 +17,6 @@ const FlagList = (props)=>{
                     page_size:pageSize
                 }
             }).then(totalRes=>{
-            console.log("FlagList -> totalRes", totalRes)
                 total=totalRes
             })
         }
@@ -33,13 +31,9 @@ const FlagList = (props)=>{
         var clientHeight = window.innerHeight || Math.min(document.documentElement.clientHeight,document.body.clientHeight);
         
         if(clientHeight + scrollTop >= scrollHeight){
-            console.log("===加载更多内容……===");
-            console.log("total--->",total)
-            console.log("window.onscroll -> currentPage*pageSize", currentPage*pageSize)
             //TODO: loading样式
             if(currentPage*pageSize<=total) {
                 currentPage=currentPage+1
-                console.log("window.onscroll -> currentPage", currentPage)
                 dispatch({
                     type: 'flag/getFlagList',
                     payload:{
@@ -53,7 +47,6 @@ const FlagList = (props)=>{
 
     useEffect(()=>{
         return ()=>{
-            console.log('unmount--->')
             currentPage = 0
             window.onscroll = null
             dispatch({
@@ -62,7 +55,7 @@ const FlagList = (props)=>{
         }
     },[dispatch])
 
-    // console.log('props--->',props)
+    // 
     return(
         <Flagitemlist flagList={flagList}/>
     )

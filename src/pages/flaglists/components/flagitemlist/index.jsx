@@ -4,7 +4,6 @@ import Flagitem from '../flagitem'
 
 export default (props) => {
   const {flagList} = props
-  console.log('flagList--->', flagList)
   return (
     <div className="flaglist-container">
       {

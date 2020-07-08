@@ -6,8 +6,6 @@ import Rewards from './components/rewards/index'
 import './index.less'
 
 const FlagDetail = (props)=>{
-  console.log('props---->',props)
-  console.log('location',window.location)
   const {flag:{flagDetail},dispatch} = props
   const {evidence,detailInfo,witness} = flagDetail
   // TODO: 获取id
@@ -36,7 +34,6 @@ const FlagDetail = (props)=>{
 
   useEffect(()=>{
     return ()=>{
-      console.log('clean up--->')
       dispatch({
         type: 'flag/clean'
       })

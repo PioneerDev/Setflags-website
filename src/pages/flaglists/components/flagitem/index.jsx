@@ -20,9 +20,7 @@ const FlagItem =  (props) => {
     "VERIFIED": '已验证',
     "CLOSED": '已关闭'
   }
-  console.log('ele---->',ele)
   const toDetail=()=>{
-    console.log('111',ele)
     dispatch({
       type:'flag/toDetail',
       payload: ele

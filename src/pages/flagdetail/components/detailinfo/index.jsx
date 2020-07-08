@@ -4,7 +4,6 @@ import './index.less'
 import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
   // TODO: 见证
-  console.log("DetailInfo -> props", props)
   // const { user:{userInfo}} = props
   const {flag:{
     flagDetail:{
@@ -13,7 +12,6 @@ const DetailInfo = (props)=>{
   }} = props
   const userId =localStorage.getItem('userId')
   const payerId = detailInfo.payer_id
-  console.log("DetailInfo -> detailinfo", detailInfo)
   const [verified, setVerified] = useState(detailInfo.verified)
   const [payerStatus, setPayerStatus] = useState(detailInfo.status)
   const [uploadFiles, setFiles] = useState(null)
@@ -30,15 +28,12 @@ const DetailInfo = (props)=>{
   }
 
   const onFileChange = (e) => {
-    console.log('upload---->',e.currentTarget.files)
     setFiles(e.currentTarget.files[0])
   }
 
   const onFileUpload = () => {
-    console.log("onFileUpload -> uploadFiles", uploadFiles)
     const formData = new FormData()
     formData.append('file',uploadFiles)
-    console.log("onFileUpload -> formData", formData)
     dispatch({
       type: 'flag/uploadEvidence',
       payload: {
