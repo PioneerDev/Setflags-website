@@ -51,7 +51,7 @@ export default {
             console.log('newflag payload--->', payload)
             if(res.code === 200) {
                 const {amount,asset,memo,recipient,trace} = res.data
-                window.location.href = `https://mixin.one/pay?return_to=www.baidu.com&recipient=${recipient}&asset=${asset}&amount=${amount}&trace=${trace}&memo=${memo}`
+                window.location.href = `mixin://pay?recipient=${recipient}&asset=${asset}&amount=${amount}&trace=${trace}&memo=${memo}`
                 // router.push('/addflagsuccess')
             } else {
                 router.push('/addflagfail')

@@ -8,8 +8,7 @@ export default (props) => {
     <div className="flaglist-container">
       {
         flagList.length>0&&flagList.map((ele,idx)=><Flagitem ele={ele} key={idx}/>)
-      }
-      
+      }     
     </div>
   )
 }
