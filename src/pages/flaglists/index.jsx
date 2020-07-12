@@ -7,11 +7,14 @@ let pageSize = 10
 let total = null
 const FlagList = (props)=>{
     const {flag:{flagList},dispatch} = props
+    const listPatch = window.location.href.indexOf('myflagslists')>-1?'flag/getMyFlagList':'flag/getFlagList' 
+    console.log("FlagList -> window.location", window.location)
+    // console.log("FlagList -> isMyList", isMyList)
     // const {dispatch} = props
     useEffect(()=>{
         if(flagList.length === 0) {
             dispatch({
-                type: 'flag/getFlagList',
+                type: listPatch,
                 payload:{
                     current_page:currentPage,
                     page_size:pageSize
@@ -20,7 +23,7 @@ const FlagList = (props)=>{
                 total=totalRes
             })
         }
-    },[dispatch,flagList])
+    },[dispatch, flagList, listPatch])
 
     window.onscroll= function(){
         //文档内容实际高度（包括超出视窗的溢出部分）
@@ -35,7 +38,7 @@ const FlagList = (props)=>{
             if(currentPage*pageSize<=total) {
                 currentPage=currentPage+1
                 dispatch({
-                    type: 'flag/getFlagList',
+                    type: listPatch,
                     payload:{
                         current_page:currentPage,
                         page_size:pageSize

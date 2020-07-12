@@ -6,6 +6,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
+import FlagIcon from '@material-ui/icons/Flag';
+import BookIcon from '@material-ui/icons/Book';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,32 +20,31 @@ const useStyles = makeStyles((theme) => ({
 export default function SimpleList() {
   const classes = useStyles();
 
+  const routerPush = (path) =>{
+    // router.push(path)
+    window.location.href = `${path}`
+  }
+
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
         <ListItem button>
           <ListItemIcon>
-            <InboxIcon />
+            <FlagIcon />
           </ListItemIcon>
-          <ListItemText primary="成就" />
+          <ListItemText primary="我的立志" onClick={()=>{routerPush('/myflagslists')}}/>
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <InboxIcon />
+            <BookIcon />
           </ListItemIcon>
-          <ListItemText primary="审核" />
+          <ListItemText primary="定投改变命运" onClick={()=>{routerPush('https://ri.firesbox.com/#/')}}/>
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <InboxIcon />
+            <ContactSupportIcon />
           </ListItemIcon>
-          <ListItemText primary="见证" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="设置" />
+          <ListItemText primary="帮助说明" />
         </ListItem>
       </List>
       <Divider />

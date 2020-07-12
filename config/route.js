@@ -8,10 +8,10 @@ module.exports = [
       ]     
     },
     {
-      path: '/myflagslist',
+      path: '/myflagslists',
       component: '../layouts/simple/index',
       routes: [
-        {path:'/myflags', component: '../pages/myflaglists/index'}
+        {path:'/myflagslists', component: '../pages/flaglists/index'}
       ]
     },
     {

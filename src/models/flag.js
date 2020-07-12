@@ -1,4 +1,4 @@
-import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList,uploadEvidence,getFlagDetail } from '@SERVICES/flag'
+import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList,uploadEvidence,getFlagDetail,getMyflagList } from '@SERVICES/flag'
 import router from 'umi/router';
 
 export default {
@@ -18,6 +18,16 @@ export default {
                 })
             }
             console.log('*getFlagList -> data', res)
+            return res.total
+        },
+        * getMyFlagList({payload},{call, put}) {
+            const res = yield call(getMyflagList,payload)
+            if(res.code === 200) {
+                yield put({
+                    type: 'changeFlaglist',
+                    payload:res.data
+                })
+            }
             return res.total
         },
         * getEvidenceList({payload}, {call, put}) {

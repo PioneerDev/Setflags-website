@@ -36,6 +36,9 @@ export async function uploadEvidence(params) {
 }
 
 export async function getFlagDetail(params) {
-  // const { flag_id } = params
   return request(`/flag/detail?flag_id=${params}`)
+}
+
+export async function getMyflagList() {
+  return request(`/myflags`)
 }

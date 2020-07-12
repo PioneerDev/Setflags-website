@@ -12,16 +12,12 @@ import ControlPointRoundedIcon from '@material-ui/icons/ControlPointRounded';
 import router from 'umi/router';
 import { connect } from 'dva'
 import saveUserCode from '@UTILS/saveUserCode'
+import ScaleLoader from "react-spinners/ScaleLoader";
+import { css } from "@emotion/core";
 console.log("saveUserCode", saveUserCode)
 
 function BasicLayout(props) {
   const [value, setValue] = React.useState('/');
-  console.log('layout props--->', props)
-  //TODO: remember to open
-  // const {dispatch} = props
-  // dispatch({
-  //   type: 'flag/getUserCode'
-  // })
   const {location:{query:{code}},loading} = props
   console.log("BasicLayout -> loading", loading)
   console.log('code---->',code)
@@ -33,6 +29,13 @@ function BasicLayout(props) {
     setValue(newValue);
     router.push(newValue)
   };
+
+  const position = css`
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  `
   return (
     <div className="normal">
       <CssBaseline />
@@ -42,6 +45,11 @@ function BasicLayout(props) {
         </Toolbar>
       </AppBar>
       {props.children}
+      <ScaleLoader 
+        css={position}
+        size={15}
+        color={"#123abc"}
+        loading={loading.global}/>
       <Tabs
         value={value}
         onChange={handleChange}
