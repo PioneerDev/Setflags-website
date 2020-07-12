@@ -22,7 +22,8 @@ function BasicLayout(props) {
   // dispatch({
   //   type: 'flag/getUserCode'
   // })
-  const {location:{query:{code}}} = props
+  const {location:{query:{code}},loading} = props
+  console.log("BasicLayout -> loading", loading)
   console.log('code---->',code)
   if(code) {
     saveUserCode(code)
@@ -58,4 +59,4 @@ function BasicLayout(props) {
   );
 }
 
-export default connect(({flag})=>({flag}))(BasicLayout)
+export default connect(({flag,loading})=>({flag,loading}))(BasicLayout)

@@ -1,4 +1,4 @@
-import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList,uploadEvidence } from '@SERVICES/flag'
+import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList,uploadEvidence,getFlagDetail } from '@SERVICES/flag'
 import router from 'umi/router';
 
 export default {
@@ -52,7 +52,18 @@ export default {
             if(res.code === 200) {
                 const {amount,asset,memo,recipient,trace} = res.data
                 window.location.href = `mixin://pay?recipient=${recipient}&asset=${asset}&amount=${amount}&trace=${trace}&memo=${memo}`
-                // router.push('/addflagsuccess')
+                let flagStatus = null
+                while(flagStatus !== 'PAID') {
+                    const delay = timeout => {
+                        return new Promise(resolve => {
+                          setTimeout(resolve, timeout);
+                        });
+                      };
+                    yield call(delay, 1500);
+                    const resTwo = yield call(getFlagDetail, res.data.flag_id); 
+                    flagStatus = resTwo.status
+                    console.log('resTwo--->', resTwo)
+                 }
             } else {
                 router.push('/addflagfail')
             }

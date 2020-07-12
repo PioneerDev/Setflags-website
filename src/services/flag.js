@@ -34,3 +34,8 @@ export async function uploadEvidence(params) {
     data: file
   })
 }
+
+export async function getFlagDetail(params) {
+  // const { flag_id } = params
+  return request(`/flag/detail?flag_id=${params}`)
+}
