@@ -71,7 +71,7 @@ export default {
                       };
                     yield call(delay, 1500);
                     const resTwo = yield call(getFlagDetail, res.data.flag_id); 
-                    if(flagStatus === 'PAID') 
+                    if(resTwo.data.status === 'PAID') 
                         {router.push('/addflagsuccess')} 
                     else {flagStatus = resTwo.data.status}
                     
