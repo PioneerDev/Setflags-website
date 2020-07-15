@@ -14,13 +14,6 @@ import router from 'umi/router';
 
 const FlagItem =  (props) => {
   const {ele,dispatch} = props
-  const statusKV = {
-    "PAID": '已支付',
-    "UNVERIFIED": '未验证',
-    "VERIFIED": '已验证',
-    "CLOSED": '已关闭',
-    "DONE": '已完成'
-  }
   const toDetail=()=>{
     dispatch({
       type:'flag/toDetail',
@@ -54,7 +47,7 @@ const FlagItem =  (props) => {
             </>
           }
         />
-        <div className="flagitem-status">{statusKV[ele.status]}</div>
+        <div className="flagitem-status">{ele.verified=='unset'?'未见证':'见证'}</div>
       </ListItem>
       <Divider variant="inset" component="li" />
       </>

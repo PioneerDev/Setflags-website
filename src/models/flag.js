@@ -103,8 +103,16 @@ export default {
         },
         * uploadEvidence({payload}, {call, put}) {
             const res = yield call(uploadEvidence, payload)
+            const flagid = payload.flagid
             if(res.code === 200) {
                 console.log('上传成功-->')
+                const eviRes = yield call (getWitnessList, flagid)
+                if(eviRes.code === 200) {
+                    yield put({
+                        type: 'listEvidence',
+                        payload:eviRes.data
+                    })
+                }
             }
             console.log('res--->',)     
         }

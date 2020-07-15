@@ -7,7 +7,7 @@ const Evidence = (props)=>{
   return (
     <div className="evidence-container">
       {evidence&&evidence.map((ele,idx)=>(
-        <EvidenceItem type={ele.type} evidenceUrl={ele.url} time={ele.create_at} key={idx}></EvidenceItem>
+        <EvidenceItem type={ele.type} evidenceUrl={ele.url} time={ele.created_at} key={idx}></EvidenceItem>
       ))}
     </div>
   )

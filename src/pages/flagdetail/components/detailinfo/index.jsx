@@ -3,8 +3,6 @@ import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
-  // TODO: 见证
-  // const { user:{userInfo}} = props
   const {flag:{
     flagDetail:{
       detailInfo
@@ -13,7 +11,7 @@ const DetailInfo = (props)=>{
   const userId =localStorage.getItem('userId')
   const payerId = detailInfo.payer_id
   const [verified, setVerified] = useState(detailInfo.verified)
-  const [payerStatus, setPayerStatus] = useState(detailInfo.status)
+  const [periodStatus, setperiodStatus] = useState(detailInfo.periodStatus)
   const [uploadFiles, setFiles] = useState(null)
   const {dispatch} = props
 
@@ -48,8 +46,8 @@ const DetailInfo = (props)=>{
 
   const renderVerify = (verified,status) =>{
     if(userId===payerId) {
-      switch(status) {
-        case 'UNVERIFIED':
+      switch(periodStatus) {
+        case 'undone':
           return (
             <div className="detailinfo-button">
               <form id="uploadImg">
@@ -59,26 +57,22 @@ const DetailInfo = (props)=>{
               </form>
             </div>
           )
-        case 'VERIFIED':
+        case 'done':
           return (
             <div>已上传证据</div>
           )
-        case 'CLOSED':
+        case 'close':
           return (
             <div>已关闭</div>
           )
-          case 'DONE':
-            return (
-              <div>已完成</div>
-            )
         default:
           
       }   
     } else {
       switch(verified) {
-        case -1:
+        case 'no':
           return <div>已见证未完成</div>
-        case 0:
+        case 'unset':
           return (<div className="detailinfo-button">
           <Button variant="contained" color="primary" style={{marginRight:10}} onClick={()=>flagOperation('yes')}>
             已完成
@@ -87,7 +81,7 @@ const DetailInfo = (props)=>{
             未完成
           </Button>
         </div>)
-        case 1:
+        case 'yes':
           return <div>已见证完成</div>
         default:
           return (<div className="detailinfo-button">
@@ -111,7 +105,7 @@ const DetailInfo = (props)=>{
           <div className="detailinfo-name">{detailInfo.payer_name}</div>
           <div className="detailinfo-task">{detailInfo.task}</div>
         </div>
-        {renderVerify(verified,payerStatus)}
+        {renderVerify(verified,periodStatus)}
         {/* //TODO: comment*/}
       <div className="detailinfo-rewards">{detailInfo.max_witness}<span className="detailinfo-unit">BOX</span></div>
     </div>
