@@ -14,6 +14,7 @@ export default {
   outputPath:'docs',
   base: '/Setflags-website/',
   publicPath :'/Setflags-website/',
+  history:'hash',
   routes: [
     ...routes.default
   ],

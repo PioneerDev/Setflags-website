@@ -9,6 +9,7 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import FlagIcon from '@material-ui/icons/Flag';
 import BookIcon from '@material-ui/icons/Book';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import router from 'umi/router';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,8 +22,8 @@ export default function SimpleList() {
   const classes = useStyles();
 
   const routerPush = (path) =>{
-    // router.push(path)
-    window.location.href = `${path}`
+    router.push(path)
+    // window.location.href = `${path}`
   }
 
   return (

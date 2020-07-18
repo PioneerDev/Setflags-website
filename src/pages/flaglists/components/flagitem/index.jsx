@@ -21,6 +21,7 @@ const FlagItem =  (props) => {
     }).then(res=>{
       router.push({
         pathname: '/flagdetail',
+        query:ele
       })
     })
   }
@@ -47,7 +48,7 @@ const FlagItem =  (props) => {
             </>
           }
         />
-        <div className="flagitem-status">{ele.verified=='unset'?'未见证':'见证'}</div>
+        <div className="flagitem-status">{ele.verified=='unset'?'未见证':'已见证'}</div>
       </ListItem>
       <Divider variant="inset" component="li" />
       </>
