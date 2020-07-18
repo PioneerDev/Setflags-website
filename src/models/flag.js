@@ -5,7 +5,7 @@ export default {
     namespace: 'flag',
     state: {
         flagList: [],
-        flagDetail: null,
+        flagDetail: {witness:null,evidence:null,detailInfo:null},
         userCode: null
     },
     effects: {
@@ -155,7 +155,7 @@ export default {
         cleanFn(state, {payload}) {
             return {
                 ...state,
-                flagDetail:{...state.flagDetail,witness:null,evidence:null}
+                flagDetail:{...state.flagDetail,witness:null,evidence:null,detailInfo:null}
             }
         },
         clearFlagList(state, {payload}) {

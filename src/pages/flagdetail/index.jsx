@@ -6,8 +6,12 @@ import Rewards from './components/rewards/index'
 import './index.less'
 
 const FlagDetail = (props)=>{
-  const {flag:{flagDetail},dispatch} = props
-  const {evidence,detailInfo,witness} = flagDetail
+  const {flag:{flagDetail},dispatch,location} = props
+  console.log("FlagDetail -> location", location)
+  const {query} = location
+  console.log("FlagDetail -> query", query)
+  const detailInfo = {...query}
+  const {evidence,witness} = flagDetail
   // TODO: 获取id
   useEffect(()=>{
     if(!evidence) {
@@ -42,9 +46,9 @@ const FlagDetail = (props)=>{
 
   return(
     <div className="flagdetail-container">
-        <DetailInfo />
-        <Evidence />
-        <Rewards />
+        {detailInfo&&<DetailInfo detailInfo={detailInfo}/>}
+        {evidence&&<Evidence />}
+        {witness&&<Rewards />}
     </div>
   )
 }

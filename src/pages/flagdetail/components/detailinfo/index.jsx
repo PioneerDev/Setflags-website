@@ -3,11 +3,7 @@ import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
-  const {flag:{
-    flagDetail:{
-      detailInfo
-    }
-  }} = props
+  const {detailInfo} = props
   const userId =localStorage.getItem('userId')
   const payerId = detailInfo.payer_id
   const [verified, setVerified] = useState(detailInfo.verified)
