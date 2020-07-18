@@ -9,11 +9,6 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import { css } from "@emotion/core";
 
 function SimpleLayout(props) {
-  //TODO: remember to open
-  // const {dispatch} = props
-  // dispatch({
-  //   type: 'flag/getUserCode'
-  // })
   const {loading} = props
 
   const position = css`

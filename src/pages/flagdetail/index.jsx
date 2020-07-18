@@ -7,12 +7,9 @@ import './index.less'
 
 const FlagDetail = (props)=>{
   const {flag:{flagDetail},dispatch,location} = props
-  console.log("FlagDetail -> location", location)
   const {query} = location
-  console.log("FlagDetail -> query", query)
   const detailInfo = {...query}
   const {evidence,witness} = flagDetail
-  // TODO: 获取id
   useEffect(()=>{
     if(!evidence) {
       dispatch({

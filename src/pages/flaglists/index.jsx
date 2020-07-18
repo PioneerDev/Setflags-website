@@ -34,7 +34,6 @@ const FlagList = (props)=>{
         var clientHeight = window.innerHeight || Math.min(document.documentElement.clientHeight,document.body.clientHeight);
         
         if(clientHeight + scrollTop >= scrollHeight){
-            //TODO: loading样式
             if(currentPage*pageSize<=total) {
                 currentPage=currentPage+1
                 dispatch({

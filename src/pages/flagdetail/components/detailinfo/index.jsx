@@ -102,7 +102,6 @@ const DetailInfo = (props)=>{
           <div className="detailinfo-task">{detailInfo.task}</div>
         </div>
         {renderVerify(verified,periodStatus)}
-        {/* //TODO: comment*/}
       <div className="detailinfo-rewards">{detailInfo.max_witness}<span className="detailinfo-unit">BOX</span></div>
     </div>
   )
