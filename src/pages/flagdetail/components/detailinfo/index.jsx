@@ -80,14 +80,7 @@ const DetailInfo = (props)=>{
         case 'yes':
           return <div>已见证完成</div>
         default:
-          return (<div className="detailinfo-button">
-          <Button variant="contained" color="primary" style={{marginRight:10}} onClick={()=>flagOperation('yes')}>
-            已完成
-          </Button>
-          <Button variant="contained" color="secondary" onClick={()=>flagOperation('no')}>
-            未完成
-          </Button>
-        </div>)
+          return (<div></div>)
       }
     }
   }

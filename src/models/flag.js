@@ -17,7 +17,6 @@ export default {
                     payload: res.data
                 })
             }
-            console.log('*getFlagList -> data', res)
             return res.total
         },
         * getMyFlagList({payload},{call, put}) {
@@ -31,7 +30,6 @@ export default {
             return res.total
         },
         * getEvidenceList({payload}, {call, put}) {
-            console.log("*getEvidenceList -> payload", payload)
             const {flagid} = payload
             const res = yield call (getEvidenceList,flagid)
             if(res.code === 200) {
@@ -58,7 +56,6 @@ export default {
         },
         * newFlag({payload}, {call, put}) {
             const res = yield call(newFlag, payload)
-            console.log('newflag payload--->', payload)
             if(res.code === 200) {
                 const {amount,asset,memo,recipient,trace} = res.data
                 window.location.href = `mixin://pay?recipient=${recipient}&asset=${asset}&amount=${amount}&trace=${trace}&memo=${memo}`
@@ -76,15 +73,12 @@ export default {
                         {router.push('/addflagsuccess')} 
                     else {flagStatus = resTwo.data.status}
                     
-                    console.log('resTwo--->', resTwo)
                  }
-                //  router.push('/addflagsuccess')
             } else {
                 router.push('/addflagfail')
             }
         },
         * toDetail({payload}, {call, put}) {
-            console.log("*toDetail -> payload", payload)
             yield put({
                 type: 'toDetailFn',
                 payload
@@ -93,7 +87,9 @@ export default {
         * opFlag({payload}, {call, put}) {
             const res = yield call(opFlag, payload)
             if(res.code===200) {
-                console.log('已见证')
+                window.location.reload()
+            } else {
+                //TODO: error message
             }
         },
         * clean({payload}, {call, put}) {
@@ -105,7 +101,6 @@ export default {
             const res = yield call(uploadEvidence, payload)
             const flagid = payload.flagid
             if(res.code === 200) {
-                console.log('上传成功-->')
                 const eviRes = yield call (getWitnessList, flagid)
                 if(eviRes.code === 200) {
                     yield put({
@@ -114,19 +109,16 @@ export default {
                     })
                 }
             }
-            console.log('res--->',)     
         }
     },
     reducers: {
         changeFlaglist(state, {payload}) {
-            console.log('payload--->', payload)
             return {
                 ...state,
                 flagList:[...state.flagList,...payload]
             }
         },
         listEvidence(state, {payload}) {
-            console.log('listFlagDetail payload--->',payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,evidence:[...payload]}
@@ -139,8 +131,6 @@ export default {
             }
         },
         toDetailFn(state, {payload}) {
-            console.log("toDetailFn -> state", state)
-            console.log("toDetailFn -> payload", payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,detailInfo:{...payload}}
