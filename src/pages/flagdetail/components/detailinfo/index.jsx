@@ -7,7 +7,7 @@ const DetailInfo = (props)=>{
   const userId =localStorage.getItem('userId')
   const payerId = detailInfo.payer_id
   const [verified, setVerified] = useState(detailInfo.verified)
-  const [periodStatus, setperiodStatus] = useState(detailInfo.periodStatus)
+  const [periodStatus, setperiodStatus] = useState(detailInfo.period_status)
   const [uploadFiles, setFiles] = useState(null)
   const {dispatch} = props
 
@@ -66,9 +66,9 @@ const DetailInfo = (props)=>{
       }   
     } else {
       switch(verified) {
-        case 'no':
+        case 'NO':
           return <div>已见证未完成</div>
-        case 'unset':
+        case 'UNSET':
           return (<div className="detailinfo-button">
           <Button variant="contained" color="primary" style={{marginRight:10}} onClick={()=>flagOperation('yes')}>
             已完成
@@ -77,7 +77,7 @@ const DetailInfo = (props)=>{
             未完成
           </Button>
         </div>)
-        case 'yes':
+        case 'YES':
           return <div>已见证完成</div>
         default:
           return (<div></div>)

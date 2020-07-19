@@ -2,17 +2,8 @@ import React,{useEffect} from 'react'
 import { connect } from 'dva'
 import './index.less'
 import {
-  fieldToTextField,
-  TextField,
-  TextFieldProps,
-  Select,
-  Switch,
+  TextField
 } from 'formik-material-ui';
-import {
-  TimePicker,
-  DatePicker,
-  DateTimePicker,
-} from 'formik-material-ui-pickers';
 import {MenuItem} from '@material-ui/core';
 import Button from '@material-ui/core/Button'
 import {Formik, Form, Field} from 'formik';
@@ -21,7 +12,6 @@ import DateFnsUtils from '@date-io/date-fns';
 
 const NewFlags = (props)=>{
   const {dispatch,assets:{assetsInfo}} = props
-  console.log("NewFlags -> assetsInfo", assetsInfo&&assetsInfo.filter(ele=>ele.asset_id=='c6d0c728-2624-429b-8e0d-d9d19b6592fa')[0].symbol)
 
   useEffect(()=>{
     if(!assetsInfo) {
@@ -65,7 +55,7 @@ const NewFlags = (props)=>{
         onSubmit={(values, {setSubmitting}) => {
             dispatch({
               type: 'flag/newFlag',
-              payload: {...values,days:Number(values.days),max_witness:Number(values.max_witness),amount:Number(values.amount),
+              payload: {...values,days_per_period:Number(values.days_per_period),days:Number(values.days),max_witness:Number(values.max_witness),amount:Number(values.amount),
               times_achieved:Number(values.times_achieved),symbol:assetsInfo&&assetsInfo.filter(ele=>ele.asset_id==values.asset_id)[0].symbol}
             })
           }}
@@ -75,7 +65,8 @@ const NewFlags = (props)=>{
           amount: 0,
           asset_id: 'none',
           max_witness:'',
-          times_achieved:1
+          times_achieved:1,
+          days_per_period: 0
           // times_achieved:new Date()
         }}
         render={({submitForm, isSubmitting, values, setFieldValue}) => (
@@ -93,10 +84,18 @@ const NewFlags = (props)=>{
             <Field
               component={TextField}
               type="text"
-              label="天数"
+              label="总天数"
               name="days"
               className="newflags-item"
-              validate={(value)=>requirenumberValidate(value, '天数')}
+              validate={(value)=>requirenumberValidate(value, '总天数')}
+            />
+            <Field
+              component={TextField}
+              type="text"
+              label="周期天数"
+              name="days_per_period"
+              className="newflags-item"
+              validate={(value)=>requirenumberValidate(value, '周期天数')}
             />
             <Field
               component={TextField}
@@ -109,10 +108,10 @@ const NewFlags = (props)=>{
             <Field
               component={TextField}
               type="text"
-              label="数量"
+              label="金额"
               name="amount"
               className="newflags-item"
-              validate={(value)=>requirefloatnumberValidate(value, '数量')}
+              validate={(value)=>requirefloatnumberValidate(value, '金额')}
             />
             <Field
               component={TextField}

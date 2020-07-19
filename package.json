@@ -24,6 +24,7 @@
     "formik-material-ui-pickers": "^0.0.9",
     "react": "^16.8.6",
     "react-alert": "^7.0.2",
+    "react-alert-template-mui": "^1.0.7",
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.8.6",
     "react-hook-form": "^5.7.2",

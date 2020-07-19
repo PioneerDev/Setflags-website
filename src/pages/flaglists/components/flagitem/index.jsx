@@ -48,7 +48,7 @@ const FlagItem =  (props) => {
             </>
           }
         />
-        <div className="flagitem-status">{ele.verified=='unset'?'未见证':'已见证'}</div>
+        <div className="flagitem-status">{ele.verified=='UNSET'?'未见证':'已见证'}</div>
       </ListItem>
       <Divider variant="inset" component="li" />
       </>
