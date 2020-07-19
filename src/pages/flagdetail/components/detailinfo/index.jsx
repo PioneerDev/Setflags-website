@@ -43,7 +43,7 @@ const DetailInfo = (props)=>{
   const renderVerify = (verified,status) =>{
     if(userId===payerId) {
       switch(periodStatus) {
-        case 'undone':
+        case 'UNDONE':
           return (
             <div className="detailinfo-button">
               <form id="uploadImg">
@@ -53,11 +53,11 @@ const DetailInfo = (props)=>{
               </form>
             </div>
           )
-        case 'done':
+        case 'DONE':
           return (
             <div>已上传证据</div>
           )
-        case 'close':
+        case 'CLOSE':
           return (
             <div>已关闭</div>
           )

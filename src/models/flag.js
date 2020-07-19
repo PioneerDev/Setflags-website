@@ -87,7 +87,7 @@ export default {
         * opFlag({payload}, {call, put}) {
             const res = yield call(opFlag, payload)
             if(res.code===200) {
-                window.location.reload()
+                yield window.location.reload()
             } else {
                 //TODO: error message
             }
@@ -102,6 +102,7 @@ export default {
             const flagid = payload.flagid
             if(res.code === 200) {
                 const eviRes = yield call (getWitnessList, flagid)
+                yield window.location.reload()
                 if(eviRes.code === 200) {
                     yield put({
                         type: 'listEvidence',
