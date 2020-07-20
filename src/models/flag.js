@@ -49,6 +49,16 @@ export default {
                 })
             }
         },
+        * getFlagDetail({payload}, {call, put}){
+            const {flagid} = payload
+            const res = yield call(getFlagDetail, flagid)
+            if(res.code===200) {
+                yield put({
+                    type: 'toDetailFn',
+                    payload:res.data
+                })
+            }
+        },
         * getUserCode(payload,{call,put}){
             yield put({
                 type: 'getUserCodeFn'

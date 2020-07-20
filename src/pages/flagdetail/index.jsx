@@ -7,31 +7,46 @@ import './index.less'
 
 const FlagDetail = (props)=>{
   const {flag:{flagDetail},dispatch,location} = props
+  const {detailInfo} = flagDetail
+  console.log("FlagDetail -> detailInfo", detailInfo)
   const {query} = location
-  const detailInfo = {...query}
+  // const detailInfo = {...query}
+  const flagid = query.id
   const {evidence,witness} = flagDetail
+  useEffect(()=>{
+    if(!evidence) {
+      dispatch({
+        type: 'flag/getFlagDetail',
+        payload: {
+          flagid
+        }
+      })
+    }
+
+  },[flagid, dispatch, evidence])
+
   useEffect(()=>{
     if(!evidence) {
       dispatch({
         type: 'flag/getEvidenceList',
         payload: {
-          flagid: detailInfo.id
+          flagid
         }
       })
     }
 
-  },[detailInfo.id, dispatch, evidence])
+  },[flagid, dispatch, evidence])
 
   useEffect(()=>{
     if(!witness) {
       dispatch({
         type: 'flag/getWitness',
         payload: {
-          flagid: detailInfo.id
+          flagid
         }
       })
     }
-  },[detailInfo.id, dispatch, witness])
+  },[flagid, dispatch, witness])
 
   useEffect(()=>{
     return ()=>{
