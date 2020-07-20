@@ -95,7 +95,7 @@ const DetailInfo = (props)=>{
           <div className="detailinfo-task">{detailInfo.task}</div>
         </div>
         {renderVerify(verified,periodStatus)}
-      <div className="detailinfo-rewards">{detailInfo.max_witness}<span className="detailinfo-unit">BOX</span></div>
+  <div className="detailinfo-rewards">{detailInfo.amount}<span className="detailinfo-unit">{detailInfo.symbol}</span></div>
     </div>
   )
 }
