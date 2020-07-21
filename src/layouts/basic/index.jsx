@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './index.less';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -21,14 +21,28 @@ function BasicLayout(props) {
   const {location:{query:{code}},loading} = props
   console.log("BasicLayout -> loading", loading)
   console.log('code---->',code)
+
   if(code) {
     saveUserCode(code)
   }
+
   const handleChange = (event, newValue) => {
     console.log('newValue---->',newValue)
     setValue(newValue);
     router.push(newValue)
   };
+
+  useEffect(()=>{
+    console.log('location-->',window.location)
+    const pathname = window.location.href
+    if(pathname.indexOf('newflags')>-1) {
+      setValue('/newflags')
+    } else if(pathname.indexOf("myflags")>-1) {
+      setValue("/myflags")
+    } else {
+      setValue("/")
+    }
+  }, [])
 
   const position = css`
     position: fixed;

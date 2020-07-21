@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from 'dva';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { css } from "@emotion/core";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 function SimpleLayout(props) {
   const {loading} = props
@@ -18,12 +19,17 @@ function SimpleLayout(props) {
   transform:translate(-50%,-50%);
  `
 
+ const pageback = ()=>{
+  window.history.back()
+ }
+
   return (
     //TODO: back
     <div className="normal">
       <CssBaseline />
       <AppBar>
         <Toolbar>
+          <ArrowBackIosIcon className="back-icon" onClick={pageback}></ArrowBackIosIcon>
           <Typography variant="h6">立志-Setflags</Typography>
         </Toolbar>
       </AppBar>
