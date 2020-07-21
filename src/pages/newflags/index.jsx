@@ -55,18 +55,21 @@ const NewFlags = (props)=>{
         onSubmit={(values, {setSubmitting}) => {
             dispatch({
               type: 'flag/newFlag',
-              payload: {...values,days_per_period:Number(values.days_per_period),days:Number(values.days),max_witness:Number(values.max_witness),amount:Number(values.amount),
-              times_achieved:Number(values.times_achieved),symbol:assetsInfo&&assetsInfo.filter(ele=>ele.asset_id==values.asset_id)[0].symbol}
+              payload: {...values,
+                days_per_period:Number(values.days_per_period),
+                max_witness:Number(values.max_witness),
+                amount:Number(values.amount),
+                total_period:Number(values.total_period),
+                symbol:assetsInfo&&assetsInfo.filter(ele=>ele.asset_id==values.asset_id)[0].symbol}
             })
           }}
         initialValues={{
           task:'',
-          days:'',
           amount: 0,
           asset_id: 'none',
           max_witness:'',
-          times_achieved:1,
-          days_per_period: 0
+          total_period:1,
+          days_per_period: 0,
           // times_achieved:new Date()
         }}
         render={({submitForm, isSubmitting, values, setFieldValue}) => (
@@ -80,14 +83,6 @@ const NewFlags = (props)=>{
               name="task"
               className="newflags-item"
               validate={(value)=>requireValidate(value, '任务名')}
-            />
-            <Field
-              component={TextField}
-              type="text"
-              label="总天数"
-              name="days"
-              className="newflags-item"
-              validate={(value)=>requirenumberValidate(value, '总天数')}
             />
             <Field
               component={TextField}
@@ -117,10 +112,10 @@ const NewFlags = (props)=>{
               component={TextField}
               type="text"
               name="asset_id"
-              label="With Select"
+              label="币种"
               select
               variant="standard"
-              helperText="Please select Range"
+              helperText="请选择币种"
               margin="normal"
               className="newflags-item"
               InputLabelProps={{
@@ -133,19 +128,13 @@ const NewFlags = (props)=>{
                 </MenuItem>
               ))}
             </Field>
-            {/* <Field 
-              component={DatePicker} 
-              name="times_achieved" 
-              label="结束时间" 
-              className="newflags-item"
-            /> */}
             <Field
               component={TextField}
               type="text"
-              label="完成次数"
-              name="times_achieved"
+              label="总周期数"
+              name="total_period"
               className="newflags-item"
-              validate={(value)=>requirefloatnumberValidate(value, '完成次数')}
+              validate={(value)=>requirefloatnumberValidate(value, '总周期数')}
             />
             <Button
               variant="contained"

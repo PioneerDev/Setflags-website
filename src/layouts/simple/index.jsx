@@ -25,12 +25,12 @@ function SimpleLayout(props) {
 
   return (
     //TODO: back
-    <div className="normal">
+    <div className="page-container">
       <CssBaseline />
       <AppBar>
         <Toolbar>
           <ArrowBackIosIcon className="back-icon" onClick={pageback}></ArrowBackIosIcon>
-          <Typography variant="h6">立志-Setflags</Typography>
+          <Typography className="top-font">立志-Setflags</Typography>
         </Toolbar>
       </AppBar>
       {props.children}

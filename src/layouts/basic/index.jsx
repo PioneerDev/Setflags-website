@@ -51,11 +51,11 @@ function BasicLayout(props) {
     transform:translate(-50%,-50%);
   `
   return (
-    <div className="normal">
+    <div className="page-container">
       <CssBaseline />
       <AppBar>
         <Toolbar>
-          <Typography variant="h6">立志-Setflags</Typography>
+          <Typography className="top-font">立志-Setflags</Typography>
         </Toolbar>
       </AppBar>
       {props.children}
