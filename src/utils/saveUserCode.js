@@ -1,6 +1,6 @@
 import {auth} from '@SERVICES/user'
 
-const saveUserCode = (code) =>{
+function saveUserCode (code) {
   return new Promise ((resolve, reject)=>{
     let userCode = localStorage.getItem('userCode')
     console.log("saveUserCode -> userCode", userCode)
@@ -10,6 +10,9 @@ const saveUserCode = (code) =>{
         if(res.code=='200') {
           localStorage.setItem('userToken',res.data.token)
           localStorage.setItem('userId', res.data.user_id)
+          resolve()
+        } else {
+          reject()
         }
       })
     }
