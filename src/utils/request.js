@@ -22,16 +22,25 @@ const errorHandler = (error)=> {
   return response;
 };
 
-const userToken = localStorage.getItem('userToken')
-const userId =localStorage.getItem('userId')
 const request = extend({
   prefix:baseurl,
   errorHandler,
-  credentials: 'omit', 
-  headers:{
-    Authorization:userToken ? ` Bearer ${userToken}`: '',
-    'x-user-id': `${userId}`
-  }
+  credentials: 'omit'
+});
+
+request.interceptors.request.use((url, options) => {
+  const userToken = localStorage.getItem('userToken')
+  const userId =localStorage.getItem('userId')
+  return {
+    url: url,
+    options: { 
+      ...options, 
+      headers:{
+        Authorization:userToken? ` Bearer ${userToken}`: '',
+        'x-user-id': `${userId}`
+      }
+    },
+  };
 });
 
 export default request;

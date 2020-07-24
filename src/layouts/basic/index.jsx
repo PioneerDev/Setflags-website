@@ -25,30 +25,31 @@ function BasicLayout(props) {
   let userToken = localStorage.getItem('userToken')
   useEffect(()=>{
     // if(code) {
-    //   saveUserCode(code)
-    //     .then(()=>{
-    //       console.log('show!!!!')
-    //       setShowFlag(true)
-    //     })
-    //     .catch(()=>{setShowFlag(false)})
-    // }
-  
+      //   saveUserCode(code)
+      //     .then(()=>{
+        //       console.log('show!!!!')
+        //       setShowFlag(true)
+        //     })
+        //     .catch(()=>{setShowFlag(false)})
+        // }
+        
     console.log('1111111',code,userToken)
     if(!code&&!userToken) {
       setTimeout(()=>{
         window.location.href = `https://mixin.one/oauth/authorize?client_id=bcec843a-d431-4bf0-8e82-cc10079d20ac&scope=PROFILE:READ+ASSETS:READ&response_type=code`
       },1000)
     }else if(code&&!userToken){
-      console.log('saveUserCode-->', saveUserCode())
-      saveUserCode(code)
-        .then(()=>{
-          console.log('show!!!!')
-          setTimeout(
-            ()=>{setShowFlag(true)},500
-          )
-          
-        })
-        .catch(()=>{setShowFlag(false)})
+      // console.log('saveUserCode-->', saveUserCode())
+      if(code) {
+        saveUserCode(code)
+          .then(()=>{
+            console.log('show!!!!')
+            setTimeout(
+              ()=>{setShowFlag(true)},500
+            )          
+          })
+          .catch(()=>{setShowFlag(false)})
+      }
     } else {
       setShowFlag(true)
     }

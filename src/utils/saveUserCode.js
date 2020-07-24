@@ -2,6 +2,7 @@ import {auth} from '@SERVICES/user'
 
 function saveUserCode (code) {
   return new Promise ((resolve, reject)=>{
+    console.log("saveUserCode -> code", code)
     let userCode = localStorage.getItem('userCode')
     console.log("saveUserCode -> userCode", userCode)
     if(!userCode ||!(code==userCode)) {
