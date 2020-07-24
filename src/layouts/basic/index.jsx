@@ -37,7 +37,7 @@ function BasicLayout(props) {
     if(!code&&!userToken) {
       setTimeout(()=>{
         window.location.href = `https://mixin.one/oauth/authorize?client_id=bcec843a-d431-4bf0-8e82-cc10079d20ac&scope=PROFILE:READ+ASSETS:READ&response_type=code`
-      },1000)
+      },10000)
     }else if(code&&!userToken){
       // console.log('saveUserCode-->', saveUserCode())
       if(code) {
