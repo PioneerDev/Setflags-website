@@ -115,6 +115,7 @@ export default {
         },
         * uploadEvidence({payload}, {call, put}) {
             const res = yield call(uploadEvidence, payload)
+            console.log("*uploadEvidence -> res", res)
             // const flagid = payload.flagid
             if(res.code === 200) {
                 // const eviRes = yield call (getWitnessList, flagid)
