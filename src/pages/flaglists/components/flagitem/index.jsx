@@ -14,6 +14,7 @@ import router from 'umi/router';
 
 const FlagItem =  (props) => {
   const {ele,dispatch} = props
+  const userId =localStorage.getItem('userId')
   const toDetail=()=>{
     dispatch({
       type:'flag/toDetail',
@@ -25,6 +26,34 @@ const FlagItem =  (props) => {
       })
     })
   }
+
+  const renderStatus=(ele)=>{
+    const payerId = ele.payer_id
+    if(userId == payerId) {
+      switch(ele.period_status) {
+        case 'UNDONE':
+          return '未上传'
+        case 'DONE':
+          return '已上传'
+        case 'CLOSE':
+          return '已关闭'
+        default:
+          return ''
+      }
+    } else {
+      switch(ele.verified) {
+        case 'NO':
+          return '已见证'
+        case 'UNSET':
+          return '未见证'
+        case 'YES':
+          return '已见证'
+        default:
+          return ''
+      }
+    }
+  }
+
   return (
     <List className="flagitem-container has-bottombar" onClick={()=>toDetail()}>
       <>
@@ -48,7 +77,7 @@ const FlagItem =  (props) => {
             </>
           }
         />
-        <div className="flagitem-status">{ele.verified=='UNSET'?'未见证':'已见证'}</div>
+        <div className="flagitem-status">{renderStatus(ele)}</div>
       </ListItem>
       <Divider variant="inset" component="li" />
       </>
