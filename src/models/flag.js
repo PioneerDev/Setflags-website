@@ -97,12 +97,13 @@ export default {
         * opFlag({payload}, {call, put}) {
             const res = yield call(opFlag, payload)
             if(res.code===200) {
-                router.push({
-                    pathname: '/flagdetail',
-                    query:{
-                        id:payload.flagid
-                    }
-                  })
+                // router.push({
+                //     pathname: '/flagdetail',
+                //     query:{
+                //         id:payload.flagid
+                //     }
+                //   })
+                window.location.reload();
             } else {
                 //TODO: error message
             }
@@ -114,21 +115,10 @@ export default {
         },
         * uploadEvidence({payload}, {call, put}) {
             const res = yield call(uploadEvidence, payload)
-            const flagid = payload.flagid
+            // const flagid = payload.flagid
             if(res.code === 200) {
-                const eviRes = yield call (getWitnessList, flagid)
-                router.push({
-                    pathname: '/flagdetail',
-                    query:{
-                        id:payload.flagid
-                    }
-                  })
-                if(eviRes.code === 200) {
-                    yield put({
-                        type: 'listEvidence',
-                        payload:eviRes.data
-                    })
-                }
+                // const eviRes = yield call (getWitnessList, flagid)
+                window.location.reload();
             }
         }
     },

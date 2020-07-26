@@ -53,6 +53,16 @@ const DetailInfo = (props)=>{
               </form>
             </div>
           )
+        case 'PAID':
+          return (
+            <div className="detailinfo-button">
+              <form id="uploadImg">
+              <div className="detailinfo-upload"><input type="file" onChange={onFileChange}/></div>
+              <br />
+              <Button variant="contained" color="primary" onClick={onFileUpload}>上传证据</Button>
+              </form>
+            </div>
+          )
         case 'DONE':
           return (
             <div>已上传证据</div>

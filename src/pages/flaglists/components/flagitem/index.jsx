@@ -33,6 +33,8 @@ const FlagItem =  (props) => {
       switch(ele.period_status) {
         case 'UNDONE':
           return '未上传'
+        case 'PAID':
+          return '未上传'
         case 'DONE':
           return '已上传'
         case 'CLOSE':
