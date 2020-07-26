@@ -27,7 +27,7 @@ const errorHandler = (error)=> {
     if(data.code !== 200) {
       Toastify({
         text: `${data.msg}`,
-        duration: 30000, 
+        duration: 3000, 
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: true,
         close: true,

@@ -1,5 +1,7 @@
 import { getFlagList,getEvidenceList,newFlag, opFlag, getWitnessList,uploadEvidence,getFlagDetail,getMyflagList } from '@SERVICES/flag'
 import router from 'umi/router';
+import Toastify from 'toastify-js'
+
 
 export default {
     namespace: 'flag',
@@ -103,6 +105,18 @@ export default {
                 //         id:payload.flagid
                 //     }
                 //   })
+                Toastify({
+                    text: `见证成功`,
+                    duration: 3000, 
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "bottom", // `top` or `bottom`
+                    position: 'left', // `left`, `center` or `right`
+                    backgroundColor: "green",
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    onClick: function(){} // Callback after click
+                  }).showToast();
                 window.location.reload();
             } else {
                 //TODO: error message
@@ -114,14 +128,66 @@ export default {
             })
         },
         * uploadEvidence({payload}, {call, put}) {
+            const flagid = payload.flagid
+            // yield put({
+            //     type: 'updateDetail',
+            //     payload:{
+            //         flagid:flagid
+            //     }
+            // })
+            console.log("*uploadEvidence -> payload", payload)
             const res = yield call(uploadEvidence, payload)
+            console.log("*uploadEvidence -> uploadEvidence", uploadEvidence)
             console.log("*uploadEvidence -> res", res)
-            // const flagid = payload.flagid
+
             if(res.code === 200) {
-                // const eviRes = yield call (getWitnessList, flagid)
-                window.location.reload();
+                Toastify({
+                    text: `上传成功`,
+                    duration: 3000, 
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "bottom", // `top` or `bottom`
+                    position: 'left', // `left`, `center` or `right`
+                    backgroundColor: "green",
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    onClick: function(){} // Callback after click
+                  }).showToast();
+                  yield put({
+                    type: 'updateDetail',
+                    payload:{
+                        flagid:flagid
+                    }
+                })
+            }
+        },
+        * updateDetail({payload},{call, put}) {
+            console.log("*updateDetail -> payload", payload)
+            const flagid = payload.flagid
+            const eviRes = yield call (getEvidenceList, flagid)
+            const witRes = yield call (getWitnessList, flagid)
+            const detailRes = yield call(getFlagDetail, flagid)
+            console.log("*updateDetail -> detailRes", detailRes)
+            if(eviRes.code === 200) {
+                yield put({
+                    type: 'listEvidence',
+                    payload:eviRes.data
+                })
+            }
+            if (witRes.code === 200) {
+                yield put({
+                    type: 'listwitness',
+                    payload: witRes.data
+                })
+            }
+            if (detailRes.code === 200) {
+                yield put({
+                    type: 'toDetailFn',
+                    payload:detailRes.data
+                })
             }
         }
+
     },
     reducers: {
         changeFlaglist(state, {payload}) {
@@ -131,6 +197,7 @@ export default {
             }
         },
         listEvidence(state, {payload}) {
+            console.log("listEvidence -> payload", payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,evidence:[...payload]}
@@ -143,12 +210,14 @@ export default {
             }
         },
         toDetailFn(state, {payload}) {
+            console.log("toDetailFn -> payload", payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,detailInfo:{...payload}}
             }
         },
         listwitness(state, {payload}) {
+            console.log("listwitness -> payload", payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,witness:[...payload]}

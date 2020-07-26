@@ -58,7 +58,7 @@ const FlagDetail = (props)=>{
 
   return(
     <div className="flagdetail-container">
-        {detailInfo&&<DetailInfo detailInfo={detailInfo}/>}
+        {detailInfo&&<DetailInfo/>}
         {evidence&&<Evidence />}
         {witness&&<Rewards />}
     </div>

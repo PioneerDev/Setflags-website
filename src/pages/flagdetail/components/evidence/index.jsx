@@ -4,6 +4,7 @@ import './index.less'
 
 const Evidence = (props)=>{
   const {flag:{flagDetail:{evidence}}} = props
+  console.log("Evidence -> evidence", evidence)
   return (
     <div className="evidence-container">
       {evidence&&evidence.map((ele,idx)=>(

@@ -1,15 +1,23 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
-  const {detailInfo} = props
+  const {flag:{flagDetail:{detailInfo}},dispatch} = props
+  // const {} = flagDetail
+  console.log("DetailInfo -> detailInfo", detailInfo)
   const userId =localStorage.getItem('userId')
   const payerId = detailInfo.payer_id
+  // let verified = detailInfo.verified
+  // let periodStatus = detailInfo.period_status
   const [verified, setVerified] = useState(detailInfo.verified)
-  const [periodStatus, setperiodStatus] = useState(detailInfo.period_status)
+  const [periodStatus, setPeriodStatus] = useState(detailInfo.period_status)
   const [uploadFiles, setFiles] = useState(null)
-  const {dispatch} = props
+
+  useEffect(()=>{
+    setVerified(detailInfo.verified)
+    setPeriodStatus(detailInfo.period_status)
+  },[detailInfo])
 
   const flagOperation = (op) =>{
     dispatch({
