@@ -23,13 +23,11 @@
     "formik-material-ui": "^2.0.0",
     "formik-material-ui-pickers": "^0.0.9",
     "react": "^16.8.6",
-    "react-alert": "^7.0.2",
-    "react-alert-template-mui": "^1.0.7",
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.8.6",
     "react-hook-form": "^5.7.2",
     "react-nice-dates": "^3.0.4",
-    "react-spinners": "^0.9.0",
+    "toastify-js": "^1.9.0",
     "umi-plugin-gh-pages": "^0.2.0"
   },
   "devDependencies": {
