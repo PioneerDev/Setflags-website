@@ -6,7 +6,7 @@ export async function getFlagList(params) {
 }
 
 export async function getEvidenceList(flagid) {
-  return request(`/flags/${flagid}/evidences`)
+  return request(`/flags/${flagid}/evidences?period=0`)
 }
 
 export async function getWitnessList(flagid) {
