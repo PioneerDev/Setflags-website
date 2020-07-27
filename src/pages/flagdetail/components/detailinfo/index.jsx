@@ -5,7 +5,6 @@ import {Button} from '@material-ui/core'
 const DetailInfo = (props)=>{
   const {flag:{flagDetail:{detailInfo}},dispatch} = props
   // const {} = flagDetail
-  console.log("DetailInfo -> detailInfo", detailInfo)
   const userId =localStorage.getItem('userId')
   const payerId = detailInfo.payer_id
   // let verified = detailInfo.verified

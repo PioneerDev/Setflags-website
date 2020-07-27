@@ -98,13 +98,8 @@ export default {
         },
         * opFlag({payload}, {call, put}) {
             const res = yield call(opFlag, payload)
+            const flagid = payload.flagid
             if(res.code===200) {
-                // router.push({
-                //     pathname: '/flagdetail',
-                //     query:{
-                //         id:payload.flagid
-                //     }
-                //   })
                 Toastify({
                     text: `见证成功`,
                     duration: 3000, 
@@ -117,7 +112,12 @@ export default {
                     stopOnFocus: true, // Prevents dismissing of toast on hover
                     onClick: function(){} // Callback after click
                   }).showToast();
-                window.location.reload();
+                  yield put({
+                    type: 'updateDetail',
+                    payload:{
+                        flagid:flagid
+                    }
+                })
             } else {
                 //TODO: error message
             }
@@ -129,16 +129,7 @@ export default {
         },
         * uploadEvidence({payload}, {call, put}) {
             const flagid = payload.flagid
-            // yield put({
-            //     type: 'updateDetail',
-            //     payload:{
-            //         flagid:flagid
-            //     }
-            // })
-            console.log("*uploadEvidence -> payload", payload)
             const res = yield call(uploadEvidence, payload)
-            console.log("*uploadEvidence -> uploadEvidence", uploadEvidence)
-            console.log("*uploadEvidence -> res", res)
 
             if(res.code === 200) {
                 Toastify({
@@ -162,12 +153,10 @@ export default {
             }
         },
         * updateDetail({payload},{call, put}) {
-            console.log("*updateDetail -> payload", payload)
             const flagid = payload.flagid
             const eviRes = yield call (getEvidenceList, flagid)
             const witRes = yield call (getWitnessList, flagid)
             const detailRes = yield call(getFlagDetail, flagid)
-            console.log("*updateDetail -> detailRes", detailRes)
             if(eviRes.code === 200) {
                 yield put({
                     type: 'listEvidence',
@@ -197,7 +186,6 @@ export default {
             }
         },
         listEvidence(state, {payload}) {
-            console.log("listEvidence -> payload", payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,evidence:[...payload]}
@@ -210,14 +198,12 @@ export default {
             }
         },
         toDetailFn(state, {payload}) {
-            console.log("toDetailFn -> payload", payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,detailInfo:{...payload}}
             }
         },
         listwitness(state, {payload}) {
-            console.log("listwitness -> payload", payload)
             return {
                 ...state,
                 flagDetail:{...state.flagDetail,witness:[...payload]}

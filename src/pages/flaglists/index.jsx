@@ -8,9 +8,6 @@ let total = null
 const FlagList = (props)=>{
     const {flag:{flagList},dispatch} = props
     const listPatch = window.location.href.indexOf('myflagslists')>-1?'flag/getMyFlagList':'flag/getFlagList' 
-    console.log("FlagList -> window.location", window.location)
-    // console.log("FlagList -> isMyList", isMyList)
-    // const {dispatch} = props
     useEffect(()=>{
         if(flagList.length === 0) {
             dispatch({
