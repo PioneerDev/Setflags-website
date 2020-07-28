@@ -87,7 +87,15 @@ const NewFlags = (props)=>{
             <Field
               component={TextField}
               type="text"
-              label="周期天数"
+              label="总周期数"
+              name="total_period"
+              className="newflags-item"
+              validate={(value)=>requirefloatnumberValidate(value, '周期数')}
+            />
+            <Field
+              component={TextField}
+              type="text"
+              label="每个周期天数"
               name="days_per_period"
               className="newflags-item"
               validate={(value)=>requirenumberValidate(value, '周期天数')}
@@ -103,16 +111,8 @@ const NewFlags = (props)=>{
             <Field
               component={TextField}
               type="text"
-              label="金额"
-              name="amount"
-              className="newflags-item"
-              validate={(value)=>requirefloatnumberValidate(value, '金额')}
-            />
-            <Field
-              component={TextField}
-              type="text"
               name="asset_id"
-              label="币种"
+              label="选择币种"
               select
               variant="standard"
               helperText="请选择币种"
@@ -131,10 +131,10 @@ const NewFlags = (props)=>{
             <Field
               component={TextField}
               type="text"
-              label="总周期数"
-              name="total_period"
+              label="金额"
+              name="amount"
               className="newflags-item"
-              validate={(value)=>requirefloatnumberValidate(value, '总周期数')}
+              validate={(value)=>requirefloatnumberValidate(value, '金额')}
             />
             <Button
               variant="contained"
