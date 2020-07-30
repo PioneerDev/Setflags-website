@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
+import { useDebounceFn } from 'ahooks';
+
 const DetailInfo = (props)=>{
   const {flag:{flagDetail:{detailInfo}},dispatch} = props
   // const {} = flagDetail
@@ -32,7 +34,20 @@ const DetailInfo = (props)=>{
     setFiles(e.currentTarget.files[0])
   }
 
-  const onFileUpload = () => {
+  // const onFileUpload = () => {
+  //   const formData = new FormData()
+  //   formData.append('file',uploadFiles)
+  //   dispatch({
+  //     type: 'flag/uploadEvidence',
+  //     payload: {
+  //       flagid:detailInfo.id,
+  //       file: formData,
+  //       type: 'image'
+  //     }
+  //   })
+  // }
+
+  const { run } = useDebounceFn(() => {
     const formData = new FormData()
     formData.append('file',uploadFiles)
     dispatch({
@@ -43,7 +58,7 @@ const DetailInfo = (props)=>{
         type: 'image'
       }
     })
-  }
+  },{wait:1000}) 
 
 
 
@@ -56,7 +71,7 @@ const DetailInfo = (props)=>{
               <form id="uploadImg">
               <div className="detailinfo-upload"><input type="file" onChange={onFileChange}/></div>
               <br />
-              <Button variant="contained" color="primary" onClick={onFileUpload}>上传证据</Button>
+              <Button variant="contained" color="primary" onClick={run}>上传证据</Button>
               </form>
             </div>
           )
@@ -66,7 +81,7 @@ const DetailInfo = (props)=>{
               <form id="uploadImg">
               <div className="detailinfo-upload"><input type="file" onChange={onFileChange}/></div>
               <br />
-              <Button variant="contained" color="primary" onClick={onFileUpload}>上传证据</Button>
+              <Button variant="contained" color="primary" onClick={run}>上传证据</Button>
               </form>
             </div>
           )
