@@ -111,6 +111,8 @@ const DetailInfo = (props)=>{
         </div>)
         case 'YES':
           return <div>已见证完成</div>
+        case 'UNDONE':
+          return <div>待上传</div>
         default:
           return (<div></div>)
       }

@@ -50,6 +50,8 @@ const FlagItem =  (props) => {
           return '未见证'
         case 'YES':
           return '已见证'
+        case 'UNDONE':
+          return '待上传'
         default:
           return ''
       }
