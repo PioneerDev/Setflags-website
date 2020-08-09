@@ -1,17 +1,19 @@
-import React,{useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import { connect } from 'dva'
 import './index.less'
 import {
   TextField
 } from 'formik-material-ui';
-import {MenuItem} from '@material-ui/core';
+import {MenuItem,Modal} from '@material-ui/core';
 import Button from '@material-ui/core/Button'
 import {Formik, Form, Field} from 'formik';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+console.log("Modal", Modal)
 
 const NewFlags = (props)=>{
   const {dispatch,assets:{assetsInfo}} = props
+  const [showModel, setShowModel] = useState(true)
 
   useEffect(()=>{
     if(!assetsInfo) {
@@ -49,10 +51,19 @@ const NewFlags = (props)=>{
     return error
   }
 
+  const body = ()=>{ 
+    return (
+    <>
+      <div className="newflags-modal-text">正在检查支付结果</div>
+      <Button variant="outlined" color="primary">取消</Button>
+    </>
+  )}
+
   return(
     <div>
       <Formik
         onSubmit={(values, {setSubmitting}) => {
+           setShowModel(true)
             dispatch({
               type: 'flag/newFlag',
               payload: {...values,
@@ -149,6 +160,16 @@ const NewFlags = (props)=>{
           </MuiPickersUtilsProvider>
         )}
         />
+        <Modal 
+          open={showModel} 
+          onClose={()=>setShowModel(false)} 
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description">
+          <div className="newflags-modal">
+            <div className="newflags-modal-text">正在检查支付结果</div>
+            <Button className="newflags-modal-btn" variant="contained" color="primary">取消</Button>
+          </div>
+        </Modal>
     </div>
   )
 }
