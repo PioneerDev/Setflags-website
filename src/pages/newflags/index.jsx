@@ -11,9 +11,11 @@ import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 console.log("Modal", Modal)
 
+let newFlagInterval
 const NewFlags = (props)=>{
   const {dispatch,assets:{assetsInfo}} = props
-  const [showModel, setShowModel] = useState(true)
+  const [showModel, setShowModel] = useState(false)
+  let flagStatus = null
 
   useEffect(()=>{
     if(!assetsInfo) {
@@ -51,13 +53,11 @@ const NewFlags = (props)=>{
     return error
   }
 
-  const body = ()=>{ 
-    return (
-    <>
-      <div className="newflags-modal-text">正在检查支付结果</div>
-      <Button variant="outlined" color="primary">取消</Button>
-    </>
-  )}
+  const handleMaskClose = () =>{
+    setShowModel(false)
+    clearInterval(newFlagInterval)
+    console.log("handleMaskClose -> newFlagInterval", newFlagInterval)
+  }
 
   return(
     <div>
@@ -72,6 +72,19 @@ const NewFlags = (props)=>{
                 amount:Number(values.amount),
                 total_period:Number(values.total_period),
                 symbol:assetsInfo&&assetsInfo.filter(ele=>ele.asset_id==values.asset_id)[0].symbol}
+            }).then(id=>{
+              newFlagInterval = setInterval(()=>{
+                dispatch({
+                  type: 'flag/payFlag',
+                  payload:{
+                    flag_id: id
+                  }
+                }).then(status=>{
+                    if(status=='PAID') {
+                      clearInterval(newFlagInterval)
+                    }
+                })
+              },1500)
             })
           }}
         initialValues={{
@@ -167,7 +180,7 @@ const NewFlags = (props)=>{
           aria-describedby="simple-modal-description">
           <div className="newflags-modal">
             <div className="newflags-modal-text">正在检查支付结果</div>
-            <Button className="newflags-modal-btn" variant="contained" color="primary">取消</Button>
+            <Button className="newflags-modal-btn" variant="contained" color="primary" onClick={()=>handleMaskClose()}>取消</Button>
           </div>
         </Modal>
     </div>

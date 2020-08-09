@@ -71,24 +71,30 @@ export default {
             if(res.code === 200) {
                 const {amount,asset,memo,recipient,trace} = res.data
                 window.location.href = `mixin://pay?recipient=${recipient}&asset=${asset}&amount=${amount}&trace=${trace}&memo=${memo}`
-                let flagStatus = null
-                while(flagStatus !== 'PAID') {
-                    const delay = timeout => {
-                        return new Promise(resolve => {
-                          setTimeout(resolve, timeout);
-                        });
-                      };
-                    yield call(delay, 1500);
-                    const resTwo = yield call(getFlagDetail, res.data.flag_id); 
-                    flagStatus = resTwo.data.status
-                    if(resTwo.data.status === 'PAID') 
-                        {router.push('/addflagsuccess')} 
-                    else {flagStatus = resTwo.data.status}
+                return res.data.flag_id
+                // let flagStatus = null
+                // while(flagStatus !== 'PAID') {
+                //     const delay = timeout => {
+                //         return new Promise(resolve => {
+                //           setTimeout(resolve, timeout);
+                //         });
+                //       };
+                //     yield call(delay, 1500);
+                //     const resTwo = yield call(getFlagDetail, res.data.flag_id); 
+                //     flagStatus = resTwo.data.status
+                //     if(resTwo.data.status === 'PAID') 
+                //         {router.push('/addflagsuccess')} 
+                //     else {flagStatus = resTwo.data.status}
                     
-                 }
+                //  }
             } else {
                 router.push('/addflagfail')
             }
+        },
+        * payFlag({payload}, {call, put}) {
+            console.log("*payFlag -> payFlag",payload)
+            const res = yield call(getFlagDetail, payload.flag_id)
+            return res.data.status
         },
         * toDetail({payload}, {call, put}) {
             yield put({
