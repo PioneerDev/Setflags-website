@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import { connect } from 'dva'
 import './index.less'
 import {
@@ -15,7 +15,7 @@ let newFlagInterval
 const NewFlags = (props)=>{
   const {dispatch,assets:{assetsInfo}} = props
   const [showModel, setShowModel] = useState(false)
-  let flagStatus = null
+  const formikRef = React.createRef()
 
   useEffect(()=>{
     if(!assetsInfo) {
@@ -54,25 +54,28 @@ const NewFlags = (props)=>{
   }
 
   const handleMaskClose = () =>{
+    console.log("handleMaskClose -> newFlagInterval", newFlagInterval)
+    console.log('formikRef--->',formikRef)
     setShowModel(false)
     clearInterval(newFlagInterval)
-    console.log("handleMaskClose -> newFlagInterval", newFlagInterval)
   }
 
   return(
     <div>
       <Formik
+        ref={formikRef}
         onSubmit={(values, {setSubmitting}) => {
            setShowModel(true)
-            dispatch({
-              type: 'flag/newFlag',
-              payload: {...values,
-                days_per_period:Number(values.days_per_period),
-                max_witness:Number(values.max_witness),
-                amount:Number(values.amount),
-                total_period:Number(values.total_period),
-                symbol:assetsInfo&&assetsInfo.filter(ele=>ele.asset_id==values.asset_id)[0].symbol}
+           dispatch({
+             type: 'flag/newFlag',
+             payload: {...values,
+              days_per_period:Number(values.days_per_period),
+              max_witness:Number(values.max_witness),
+              amount:Number(values.amount),
+              total_period:Number(values.total_period),
+              symbol:assetsInfo&&assetsInfo.filter(ele=>ele.asset_id==values.asset_id)[0].symbol}
             }).then(id=>{
+              setSubmitting(false)
               newFlagInterval = setInterval(()=>{
                 dispatch({
                   type: 'flag/payFlag',
@@ -175,7 +178,6 @@ const NewFlags = (props)=>{
         />
         <Modal 
           open={showModel} 
-          onClose={()=>setShowModel(false)} 
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description">
           <div className="newflags-modal">
