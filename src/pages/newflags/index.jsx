@@ -84,9 +84,10 @@ const NewFlags = (props)=>{
                     flag_id: id
                   }
                 }).then(status=>{
+                  console.log('status')
                     if(status=='PAID') {
-                      clearInterval(newFlagInterval)
                       router.push('/addflagsuccess')
+                      clearInterval(newFlagInterval)
                     }
                 })
               },1500)
