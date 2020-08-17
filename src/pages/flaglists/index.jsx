@@ -46,7 +46,7 @@ const FlagList = (props)=>{
 
     useEffect(()=>{
         return ()=>{
-            currentPage = 0
+            currentPage = 1
             window.onscroll = null
             dispatch({
                 type: 'flag/clearFlagList'
