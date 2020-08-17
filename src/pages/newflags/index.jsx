@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button'
 import {Formik, Form, Field} from 'formik';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import router from 'umi/router';
 console.log("Modal", Modal)
 
 let newFlagInterval
@@ -85,6 +86,7 @@ const NewFlags = (props)=>{
                 }).then(status=>{
                     if(status=='PAID') {
                       clearInterval(newFlagInterval)
+                      router.push('/addflagsuccess')
                     }
                 })
               },1500)
