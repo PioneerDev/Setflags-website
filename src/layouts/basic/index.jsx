@@ -20,6 +20,7 @@ function BasicLayout(props) {
   const [value, setValue] = React.useState('/');
   const [showFlag, setShowFlag] = React.useState(false)
   const {location:{query:{code}},loading} = props
+  const {CLIENTID:clientid} = process.env
   console.log("BasicLayout -> loading", loading)
   console.log('code---->',code)
   let userToken = localStorage.getItem('userToken')
@@ -36,7 +37,7 @@ function BasicLayout(props) {
     console.log('1111111',code,userToken)
     if(!code&&!userToken) {
       setTimeout(()=>{
-        window.location.href = `https://mixin.one/oauth/authorize?client_id=bcec843a-d431-4bf0-8e82-cc10079d20ac&scope=PROFILE:READ+ASSETS:READ&response_type=code`
+        window.location.href = `https://mixin.one/oauth/authorize?client_id=${clientid}&scope=PROFILE:READ+ASSETS:READ&response_type=code`
       },1000)
       localStorage.removeItem('userToken');
       localStorage.removeItem('userId');
@@ -59,7 +60,7 @@ function BasicLayout(props) {
   
     // if(userToken) {
     // }
-  },[code,userToken])
+  },[clientid, code, userToken])
 
 
   const handleChange = (event, newValue) => {
