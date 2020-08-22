@@ -20,5 +20,25 @@ $ yarn build
 $ yarn commit
 ```
 
+## Deploy
+1. install dependencies
+```
+yarn install
+```
+
+2. set baseUrl, mixin robot clientid in config/config.prod.js
+```
+  define:{
+    "process.env.BASEURL":'https://setflags.droneidentity.eu',
+    "process.env.CLIENTID": 'bcec843a-d431-4bf0-8e82-cc10079d20ac'
+  }
+```
+3. build app
+```
+yarn build:prod
+```
+then deploy the dist folder
+
+
 ## Info
 [Matrial-UI](https://material-ui.com/)
