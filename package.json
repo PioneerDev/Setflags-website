@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "start": "UMI_ENV=mock umi dev",
-    "start:no-mock": "cross-env UMI_ENV=dev  MOCK=none umi dev",
+    "start:mock": "UMI_ENV=mock umi dev",
+    "start:dev": "cross-env UMI_ENV=dev MOCK=none umi dev",
+    "start:prod": "cross-env UMI_ENV=prod MOCK=none umi dev",
     "build:dev": "cross-env UMI_ENV=dev umi build",
     "build:prod": "cross-env UMI_ENV=prod umi build",
     "test": "umi test",
