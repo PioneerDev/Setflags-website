@@ -16,6 +16,8 @@ function saveUserCode (code) {
           reject()
         }
       })
+    }else {
+      resolve()
     }
     // let userId = localStorage.getItem('userId')
     // let userToken = localStorage.getItem('userToken')

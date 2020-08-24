@@ -5,7 +5,7 @@ import Toastify from 'toastify-js'
 const {BASEURL:baseurl,CLIENTID:clientid} = process.env
 // console.log("clientid", CLIENT_ID)
 console.log("clientid",process.env.BASEURL)
-console.log("baseurl", clientid)
+console.log("baseurl", process.env.CLIENTID)
 // 402就是登录失效
 const errorHandler = (error)=> {
   console.log("errorHandler -> error", error)
