@@ -22,7 +22,7 @@ const FlagItem =  (props) => {
     }).then(res=>{
       router.push({
         pathname: '/flagdetail',
-        query:ele
+        query:{id:ele.id}
       })
     })
   }

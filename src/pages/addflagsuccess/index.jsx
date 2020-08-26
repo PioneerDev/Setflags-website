@@ -7,9 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import router from 'umi/router';
 
 const AddSuccess = (props)=>{
-  
+
+  const {location} = props
+  const {query} = location
   const goHome = ()=>{
-    router.push('/')
+    router.push({
+      pathname:'/flagdetail',
+      query:{id:query.id}
+    })
   }
 
   return(
@@ -21,7 +26,7 @@ const AddSuccess = (props)=>{
       </div>
       <div>
         <Button variant="contained" size="large" color="primary" style={{marginTop:40}} onClick={()=>goHome()}>
-            回到首页
+            上传证据
         </Button>
       </div>
     </div>

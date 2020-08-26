@@ -14,17 +14,26 @@ console.log("Modal", Modal)
 
 let newFlagInterval
 const NewFlags = (props)=>{
-  const {dispatch,assets:{assetsInfo}} = props
+  const {dispatch} = props
   const [showModel, setShowModel] = useState(false)
   const formikRef = React.createRef()
 
-  useEffect(()=>{
-    if(!assetsInfo) {
-      dispatch({
-        type:'assets/getAssetsInfo'
-      })
-    }
-  },[assetsInfo, dispatch])
+  const assetsInfo = [{
+    asset_id:'f5ef6b5d-cc5a-3d90-b2c0-a2fd386e7a3c',
+    symbol:'box'
+  },{
+    asset_id:'c6d0c728-2624-429b-8e0d-d9d19b6592fa',
+    symbol:'btc'
+  },{
+    asset_id:'6cfe566e-4aad-470b-8c9a-2fd35b49c68d',
+    symbol:'eos'
+  },{
+    asset_id:'c94ac88f-4671-3976-b60a-09064f1811e8',
+    symbol:'xin'
+  },{
+    asset_id:'3edb734c-6d6f-32ff-ab03-4eb43640c758',
+    symbol:'prs'
+  }]
 
   const requireValidate = (value, name) =>{
     let error
@@ -86,7 +95,7 @@ const NewFlags = (props)=>{
                 }).then(status=>{
                   console.log('status')
                     if(status=='PAID') {
-                      router.push('/addflagsuccess')
+                      router.push({pathname:'/addflagsuccess',query:{id}})
                       clearInterval(newFlagInterval)
                     }
                 })
@@ -96,10 +105,10 @@ const NewFlags = (props)=>{
         initialValues={{
           task:'',
           amount: 0,
-          asset_id: 'none',
-          max_witness:'',
+          asset_id: 'f5ef6b5d-cc5a-3d90-b2c0-a2fd386e7a3c',
+          max_witness:1,
           total_period:1,
-          days_per_period: 0,
+          days_per_period: 1,
           // times_achieved:new Date()
         }}
         render={({submitForm, isSubmitting, values, setFieldValue}) => (

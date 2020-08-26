@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'dva'
+import dayjs from 'dayjs'
 import './index.less'
 
 const Evidence = (props)=>{
@@ -19,10 +20,10 @@ const EvidenceItem = (props)=>{
   const { evidenceUrl, time } = props
   return(
     <div className="evidence-item">
-      <div className="evidence-item-media">
-        <img src={evidenceUrl} alt="evidenceitm"></img>
+      <div className="evidence-item-media" style={{'backgroundImage':`url(${evidenceUrl})`}}>
+        {/* <img src={evidenceUrl} alt="evidenceitm"></img> */}
       </div>
-      <div className="evidence-item-time">{time}</div>
+      <div className="evidence-item-time">{dayjs(time).format('YYYY-MM-DD HH:mm:ss')}</div>
     </div>
   )
 }

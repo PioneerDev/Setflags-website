@@ -6,11 +6,8 @@ import { useDebounceFn } from 'ahooks';
 
 const DetailInfo = (props)=>{
   const {flag:{flagDetail:{detailInfo}},dispatch} = props
-  // const {} = flagDetail
   const userId =localStorage.getItem('userId')
   const payerId = detailInfo.payer_id
-  // let verified = detailInfo.verified
-  // let periodStatus = detailInfo.period_status
   const [verified, setVerified] = useState(detailInfo.verified)
   const [periodStatus, setPeriodStatus] = useState(detailInfo.period_status)
   const [uploadFiles, setFiles] = useState(null)
@@ -34,19 +31,6 @@ const DetailInfo = (props)=>{
     setFiles(e.currentTarget.files[0])
   }
 
-  // const onFileUpload = () => {
-  //   const formData = new FormData()
-  //   formData.append('file',uploadFiles)
-  //   dispatch({
-  //     type: 'flag/uploadEvidence',
-  //     payload: {
-  //       flagid:detailInfo.id,
-  //       file: formData,
-  //       type: 'image'
-  //     }
-  //   })
-  // }
-
   const { run } = useDebounceFn(() => {
     const formData = new FormData()
     formData.append('file',uploadFiles)
@@ -60,8 +44,6 @@ const DetailInfo = (props)=>{
     })
   },{wait:1000}) 
 
-
-
   const renderVerify = (verified,status) =>{
     if(userId===payerId) {
       switch(periodStatus) {
@@ -71,7 +53,7 @@ const DetailInfo = (props)=>{
               <form id="uploadImg">
               <div className="detailinfo-upload"><input type="file" onChange={onFileChange}/></div>
               <br />
-              <Button variant="contained" color="primary" onClick={run}>上传证据</Button>
+              <Button variant="contained" color="primary" onClick={run} disabled={!uploadFiles}>上传证据</Button>
               </form>
             </div>
           )
@@ -81,7 +63,7 @@ const DetailInfo = (props)=>{
               <form id="uploadImg">
               <div className="detailinfo-upload"><input type="file" onChange={onFileChange}/></div>
               <br />
-              <Button variant="contained" color="primary" onClick={run}>上传证据</Button>
+              <Button variant="contained" color="primary" onClick={run} disabled={!uploadFiles}>上传证据</Button>
               </form>
             </div>
           )

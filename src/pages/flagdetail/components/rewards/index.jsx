@@ -1,5 +1,6 @@
 import React,{ useEffect } from 'react'
 import { connect } from 'dva'
+import dayjs from 'dayjs'
 import './index.less'
 
 const Rewards = (props)=>{
@@ -23,7 +24,7 @@ const RewardsItem = (props) => {
         {/* 一行隐藏 */}
         <div className="rewards-item-txt">
           <div className="rewards-item-name">{name}</div>
-          <div className="rewards-item-time">{time}</div>
+          <div className="rewards-item-time">{dayjs(time).format('YYYY-MM-DD HH:mm:ss')}</div>
         </div>
       </div>
   <div className="rewards-item-amount">{amount} <span className="rewards-item-unit">{unit}</span></div>
