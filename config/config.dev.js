@@ -4,8 +4,8 @@ export default {
     "process.env.CLIENTID": 'bcec843a-d431-4bf0-8e82-cc10079d20ac'
   },
   outputPath:'docs',
-  base: '/',
-  publicPath :'/',
+  base: '/Setflags-website/',
+  publicPath :'/Setflags-website/',
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
