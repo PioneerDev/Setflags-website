@@ -3,6 +3,7 @@ import { connect } from 'dva'
 import './index.less'
 import {Button} from '@material-ui/core'
 import { useDebounceFn } from 'ahooks';
+import config from '../../../../../config/config';
 
 const DetailInfo = (props)=>{
   const {flag:{flagDetail:{detailInfo}},dispatch} = props
@@ -24,7 +25,7 @@ const DetailInfo = (props)=>{
         flagid:detailInfo.id,
         op
       }
-    }) 
+    })
   }
 
   const onFileChange = (e) => {
@@ -42,7 +43,7 @@ const DetailInfo = (props)=>{
         type: 'image'
       }
     })
-  },{wait:1000}) 
+  },{wait:1000})
 
   const renderVerify = (verified,status) =>{
     if(userId===payerId) {
@@ -76,8 +77,8 @@ const DetailInfo = (props)=>{
             <div>已关闭</div>
           )
         default:
-          
-      }   
+
+      }
     } else {
       switch(verified) {
         case 'NO':
@@ -109,6 +110,22 @@ const DetailInfo = (props)=>{
           </div>
           <div className="detailinfo-name">{detailInfo.payer_name}</div>
           <div className="detailinfo-task">{detailInfo.task}</div>
+          <div className="detailinfo-info-txt">
+             <div className="detailinfo-info-item">
+               目前周期:{detailInfo.period}
+             </div>
+            <div className="detailinfo-info-item">
+              总周期数:{detailInfo.total_period}
+            </div>
+          </div>
+          <div className="detailinfo-info-txt">
+            <div className="detailinfo-info-item">
+              每个周期天数:{detailInfo.days_per_period}
+            </div>
+            <div className="detailinfo-info-item">
+              总天数:{detailInfo.days}
+            </div>
+          </div>
         </div>
         {renderVerify(verified,periodStatus)}
   <div className="detailinfo-rewards">{detailInfo.amount}<span className="detailinfo-unit">{detailInfo.symbol}</span></div>
