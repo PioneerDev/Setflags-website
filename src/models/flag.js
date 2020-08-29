@@ -94,7 +94,9 @@ export default {
         * payFlag({payload}, {call, put}) {
             console.log("*payFlag -> payFlag",payload)
             const res = yield call(getFlagDetail, payload.flag_id)
-            return res.data.status
+            if(res.code==200) {
+                return res.data.status
+            }         
         },
         * toDetail({payload}, {call, put}) {
             yield put({
