@@ -64,7 +64,7 @@ export default {
         * getUserCode(payload,{call,put}){
             yield put({
                 type: 'getUserCodeFn'
-            })    
+            })
         },
         * newFlag({payload}, {call, put}) {
             const res = yield call(newFlag, payload)
@@ -80,12 +80,12 @@ export default {
                 //         });
                 //       };
                 //     yield call(delay, 1500);
-                //     const resTwo = yield call(getFlagDetail, res.data.flag_id); 
+                //     const resTwo = yield call(getFlagDetail, res.data.flag_id);
                 //     flagStatus = resTwo.data.status
-                //     if(resTwo.data.status === 'PAID') 
-                //         {router.push('/addflagsuccess')} 
+                //     if(resTwo.data.status === 'PAID')
+                //         {router.push('/addflagsuccess')}
                 //     else {flagStatus = resTwo.data.status}
-                    
+
                 //  }
             } else {
                 router.push('/addflagfail')
@@ -96,7 +96,7 @@ export default {
             const res = yield call(getFlagDetail, payload.flag_id)
             if(res.code==200) {
                 return res.data.status
-            }         
+            }
         },
         * toDetail({payload}, {call, put}) {
             yield put({
@@ -110,7 +110,7 @@ export default {
             if(res.code===200) {
                 Toastify({
                     text: `见证成功`,
-                    duration: 3000, 
+                    duration: 3000,
                     destination: "https://github.com/apvarun/toastify-js",
                     newWindow: true,
                     close: true,
@@ -142,7 +142,7 @@ export default {
             if(res.code === 200) {
                 Toastify({
                     text: `上传成功`,
-                    duration: 3000, 
+                    duration: 3000,
                     destination: "https://github.com/apvarun/toastify-js",
                     newWindow: true,
                     close: true,
@@ -202,7 +202,7 @@ export default {
         getUserCodeFn(state, {payload}) {
             const userCode = localStorage.getItem('userCode')
             if(!userCode) {
-                window.location.href = `https://mixin.one/oauth/authorize?client_id=bcec843a-d431-4bf0-8e82-cc10079d20ac&scope=PROFILE:READ+ASSETS:READ&response_type=code`
+                window.location.href = `https://mixin-oauth.firesbox.com/?client_id=bcec843a-d431-4bf0-8e82-cc10079d20ac&scope=PROFILE:READ+ASSETS:READ&response_type=code`
             }
         },
         toDetailFn(state, {payload}) {
