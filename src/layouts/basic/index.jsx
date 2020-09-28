@@ -37,7 +37,7 @@ function BasicLayout(props) {
     console.log('1111111',code,userToken)
     if(!code&&!userToken) {
       setTimeout(()=>{
-        window.location.href = `https://mixin-oauth.firesbox.com?client_id=${process.env.CLIENTID}&scope=PROFILE:READ&response_type=code`
+        window.location.href = `https://mixin-oauth.firesbox.com/?client_id=${process.env.CLIENTID}&scope=PROFILE:READ&response_type=code`
       },1000)
       localStorage.removeItem('userToken');
       localStorage.removeItem('userId');

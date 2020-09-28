@@ -15,7 +15,7 @@ const errorHandler = (error)=> {
     if(response.status === 401) {
       //TODO: 提取链接出来
       setTimeout(()=>{
-        window.location.href = `https://mixin-oauth.firesbox.com?client_id=${process.env.CLIENTID}&scope=PROFILE:READ&response_type=code`
+        window.location.href = `https://mixin-oauth.firesbox.com/?client_id=${process.env.CLIENTID}&scope=PROFILE:READ&response_type=code`
       },1000)
       localStorage.removeItem('userToken');
       localStorage.removeItem('userId');
