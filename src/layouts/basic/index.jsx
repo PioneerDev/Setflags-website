@@ -33,11 +33,11 @@ function BasicLayout(props) {
         //     })
         //     .catch(()=>{setShowFlag(false)})
         // }
-        
+
     console.log('1111111',code,userToken)
     if(!code&&!userToken) {
       setTimeout(()=>{
-        window.location.href = `https://mixin.one/oauth/authorize?client_id=${process.env.CLIENTID}&scope=PROFILE:READ+ASSETS:READ&response_type=code`
+        window.location.href = `https://mixin-oauth.firesbox.com?client_id=${process.env.CLIENTID}&scope=PROFILE:READ&response_type=code`
       },1000)
       localStorage.removeItem('userToken');
       localStorage.removeItem('userId');
@@ -50,14 +50,14 @@ function BasicLayout(props) {
             console.log('show!!!!')
             setTimeout(
               ()=>{setShowFlag(true)},500
-            )          
+            )
           })
           .catch(()=>{setShowFlag(false)})
       }
     } else {
       setShowFlag(true)
     }
-  
+
     // if(userToken) {
     // }
   },[clientid, code, userToken])
@@ -96,7 +96,7 @@ function BasicLayout(props) {
         </Toolbar>
       </AppBar>
       {showFlag&&(props.children)}
-      <ScaleLoader 
+      <ScaleLoader
         css={position}
         size={15}
         color={"#123abc"}

@@ -15,7 +15,7 @@ const errorHandler = (error)=> {
     if(response.status === 401) {
       //TODO: 提取链接出来
       setTimeout(()=>{
-        window.location.href = `https://mixin.one/oauth/authorize?client_id=${process.env.CLIENTID}&scope=PROFILE:READ+ASSETS:READ&response_type=code`
+        window.location.href = `https://mixin-oauth.firesbox.com?client_id=${process.env.CLIENTID}&scope=PROFILE:READ&response_type=code`
       },1000)
       localStorage.removeItem('userToken');
       localStorage.removeItem('userId');
@@ -30,7 +30,7 @@ const errorHandler = (error)=> {
     if(data.code !== 200) {
       Toastify({
         text: `${data.msg}`,
-        duration: 3000, 
+        duration: 3000,
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: true,
         close: true,
@@ -41,7 +41,7 @@ const errorHandler = (error)=> {
         onClick: function(){} // Callback after click
       }).showToast();
     }
-  } 
+  }
   return response;
 };
 
@@ -59,8 +59,8 @@ request.interceptors.request.use((url, options) => {
   const userId =localStorage.getItem('userId')
   return {
     url: url,
-    options: { 
-      ...options, 
+    options: {
+      ...options,
       headers:{
         Authorization:userToken? ` Bearer ${userToken}`: '',
         'x-user-id': `${userId}`
