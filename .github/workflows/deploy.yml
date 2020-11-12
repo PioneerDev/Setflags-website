@@ -4,6 +4,8 @@ env:
   OSS_ENDPOINT: oss-cn-beijing.aliyuncs.com
   AWS_REGION: us-east-1
   APP_ENV: prod
+  BASEURL: f1-setflags-api.firesbox.com
+  CLIENTID: b51fc704-66d4-4f53-bc86-2fc2e2049506
 
 on:
   push:
