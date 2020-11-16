@@ -11,7 +11,7 @@ if(argv.length > 2) {
 export default {
   define:{
     "process.env.BASEURL":process.env.BASEURL?process.env.BASEURL:'https://setflags.droneidentity.eu',
-    "process.env.CLIENTID": process.env.BASEURL?process.env.BASEURL:'bcec843a-d431-4bf0-8e82-cc10079d20ac'
+    "process.env.CLIENTID": process.env.CLIENTID?process.env.CLIENTID:'bcec843a-d431-4bf0-8e82-cc10079d20ac'
   },
   outputPath:'dist',
   base: '/',
