@@ -45,8 +45,9 @@ const errorHandler = (error)=> {
   return response;
 };
 
+console.log('process.env.BASEURL--->',process.env.BASEURL)
 const extendConfig = {
-    prefix:process.env.BASEURL,
+    prefix:'',
     errorHandler,
     credentials: 'omit'
   }
@@ -58,7 +59,7 @@ request.interceptors.request.use((url, options) => {
   const userToken = localStorage.getItem('userToken')
   const userId =localStorage.getItem('userId')
   return {
-    url: url,
+    url: `${process.env.BASEURL}${url}`,
     options: {
       ...options,
       headers:{
